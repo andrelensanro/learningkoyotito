@@ -1,0 +1,107 @@
+
+<app-HeaderSidebarP></app-HeaderSidebarP>
+<main>
+	<article class="content">
+      <div class="borroso">
+			  <h1>Configuración de la cuenta</h1>
+        <br>
+
+        <input id="tab1" type="radio" name="tabs" checked>
+        <label for="tab1" >Datos personales</label>
+          
+        <input id="tab2" type="radio" name="tabs">
+        <label for="tab2">Correos de contacto</label>
+          
+        <input id="tab3" type="radio" name="tabs">
+        <label for="tab3">Cuenta</label>
+            
+        <section id="content1" scrollable style="overflow-y: auto; height: 350px;">
+              <br><br>
+              <p>
+                <mat-form-field style="width: 35%;">
+                  <mat-label>Nombre</mat-label>
+                    <!-- <input matInput placeholder="Ingrese un nombre" [(ngModel)]='usuario.nombre' requiered> -->
+                    <input matInput name="nombre" type="text" placeholder="Ingrese un nombre" editable [ngModel]="usuario.nombre" (ngModelChange)="changeNombre($event)">
+                    {{usuario.nombre}}
+                  </mat-form-field>
+                </p>
+                    
+                <div class="example-container">
+                  <mat-form-field style="width: 35%;">
+                    <mat-label>Appelido 1</mat-label>
+                    <input matInput name="ap1_usu"  placeholder="Ingrese un apellido"  [ngModel]="usuario.apellido1" (ngModelChange)="changeApellido1($event)">
+                    {{usuario.apellido1}}
+                  </mat-form-field>
+                  <mat-form-field style="width: 35%; padding: 0px 40px">
+                    <mat-label>Apellido 2</mat-label>
+                    <input matInput name="ap2_usu"  placeholder="Ingrese un apellido" [ngModel]="usuario.apellido2" (ngModelChange)="changeApellido2($event)">
+                    {{usuario.apellido2}}
+                  </mat-form-field>
+                  </div>
+
+
+          <button mat-flat-button color="primary" style="background-color: green;" type="submit" role="button" (click)="actualizarDatos()" >Guardar cambios</button>
+        </section>
+        <section id="content2" style="width: 1200px;">
+            <mat-form-field style="position: absolute; top: 10px;"><!--<mat-form-field class="example-full-width">-->
+              <mat-label>Correo de contacto</mat-label>
+              <input matInput placeholder="¿Un nuevo correo?" type="email" name="correo" [ngModel]="profesor.correoContacto" (ngModelChange)="changeCorreoContacto($event)">
+              {{profesor.correoContacto}}
+            </mat-form-field>
+          <button mat-flat-button style="background-color: rgb(63, 134, 30); position: absolute; top: 30px; left: 400px;"  type="submit" role="button" (click)="actualizarCorreoContacto()">Añadir</button>      
+             
+          <div style="position: absolute; top: 80px;">
+          <div class="tbl-header">
+            <table>
+              <thead>
+                <tr>
+                  <th>Correo</th>
+                  <th>Eliminar</th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+            <div class="tbl-content">
+              <table cellpadding="0" cellspacing="0" border="0">
+                <tbody>
+                  <tr>
+                  <td style="word-wrap: break-word;" ><input type="text" class="form-control" id="">{{profesor.correoContacto}}</td>
+                  <td style="text-align: center;" class="tdG"><button mat-icon-button (click)="eliminarCorreoContacto()"><mat-icon>delete_forever</mat-icon></button></td>
+                  </tr>
+              </tbody>
+            </table>
+          </div>
+          </div>
+        </section>
+<section id="content3">
+       
+  <br><br>
+  <p>
+    <mat-form-field style="width: 35%;">
+      <mat-label>Correo</mat-label>
+        <input matInput placeholder="Ingrese un nombre" [ngModel]="usuario.correo" (ngModelChange)="changeCorreo($event)">
+        {{usuario.correo}}
+      </mat-form-field>
+    </p>
+        
+    <div class="example-container">
+      <mat-form-field style="width: 35%;">
+        <mat-label>Contraseña</mat-label>
+        <input matInput name="ap1_usu"  placeholder="¿Quiere cambiar su contraseña?" [ngModel]="password1">
+      </mat-form-field>
+      <mat-form-field style="width: 35%; padding: 0px 40px">
+        <mat-label>Repetir contraseña</mat-label>
+        <input matInput name="ap2_usu"  placeholder="Ingrese la contraseña de nuevo" [ngModel]="password2">
+      </mat-form-field>
+      </div>
+<button mat-flat-button color="primary" style="background-color: green;" type="submit" role="button" (click)="actualizarDatosCuenta()" >Guardar cambios</button>
+<button mat-flat-button color="primary" style="background-color: red;"  (click)="nav_inicio();eliminar_cuenta()"> Dar cuenta de baja</button>
+</section>
+        
+      </div>
+    </article>
+    <div class='air air1  Iborroso' style="z-index: 1;"></div>
+    <div class='air air2  Iborroso' style="z-index: 1;"></div>
+    <div class='air air3  Iborroso' style="z-index: 1;"></div>
+    <div class='air air4  Iborroso' style="z-index: 1;"></div>	
+</main>
