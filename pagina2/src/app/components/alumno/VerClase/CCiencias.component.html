@@ -1,0 +1,109 @@
+<div class="hero">
+<app-HeaderSidebarA></app-HeaderSidebarA>
+
+    <h1 class="page-header" style="position: absolute; top: 10%;">Animales I</h1>
+<div class="result" #result style="z-index: 10;"><- Presiona y habla.</div>
+    <div class="example-button-container">
+        <button (click)="startConverting(result);"  class="btnmic" [disabled]="isDisabled" mat-fab color="primary">
+          <mat-icon>microphone</mat-icon>
+        </button>
+    </div>
+<div class="Solucion" #Solucion>
+
+</div>
+
+<br>
+
+<div class="form-container">
+  <form action="" role="form">
+    <input id='step2' type='checkbox'>
+    <input id='step3' type='checkbox'>
+    <input id='step4' type='checkbox'>
+    <input id='step5' type='checkbox'>
+    <input id='step6' type='checkbox'>
+
+
+    <div id="part1" class="form-group">
+      
+      <h1 class="Instruccion1" style="position: absolute; top: 18%; right: 44%;">¿Qué animal escuchas?</h1>
+      <div class="panel panel-primary">
+        <!-- <img src="../../../../assets/esp-ciencias/cabra.png" alt="Img1"> -->
+        <!-- <input type="file" id="audio" accept="audio/*" (change)="upload($event)"> -->
+        <audio src="../../../../assets/esp-ciencias/gallo.mp3" controls></audio>
+        <div class="btn-group btn-group-lg" role="group" aria-label="...">
+          <label for='step2' id="continue-step2" class="continue">
+            <div class="btn btn-default btn-success btn-lg" role="button" (click)="Disables(Solucion, result)" [hidden]="show">Siguiente</div>
+          </label>
+        </div>
+      </div>
+      <button (click)="validacion('gallo',Solucion); " [hidden]="!show">Continuar</button>
+    </div>
+
+    <div id="part2" class="form-group">
+      <h1 class="Instruccion2" style="position: absolute; top: 18%; right: 44%;">¿Qué animal ves?</h1>
+      <div class="panel panel-primary">
+        <img src="../../../../assets/esp-ciencias/jirafa.png" alt="Img2">
+        <div class="btn-group btn-group-lg btn-group-justified" role="group" aria-label="...">
+          <label for='step3' id="continue-step3" class="continue">
+            <div class="btn btn-default btn-success btn-lg" role="button" (click)="Disables(Solucion, result)" [hidden]="show">Siguiente</div>
+          </label>
+        </div>
+      </div>
+      <button (click)="validacion('jirafa',Solucion); " [hidden]="!show">Continuar</button>
+    </div>
+
+    <div id="part3" class="form-group">
+      <h1 class="Instruccion3" style="position: absolute; top: 18%; right: 44%;">¿Qué animal escuchas?</h1>
+        <div class="panel panel-primary">
+          <!-- <img src="../../../../assets/esp-ciencias/grillo.png" alt="Img3"> -->
+          <!-- <input type="file" id="audio" accept="audio/*" (change)="upload($event)"> -->
+          <audio src="../../../../assets/esp-ciencias/rana.mp3" controls></audio>
+          <div class="btn-group btn-group-lg btn-group-justified" role="group" aria-label="...">
+            <label for='step4' id="continue-step4" class="continue">
+                <div class="btn btn-default btn-success btn-lg" role="button" (click)="Disables(Solucion, result)" [hidden]="show">Siguiente</div>
+            </label>
+          </div>
+        </div>
+        <button (click)="validacion('rana',Solucion); " [hidden]="!show">Continuar</button>
+    </div>
+
+      
+    <div id="part4" class="form-group">
+      <h1 class="Instruccion4" style="position: absolute; top: 18%; right: 44%;">¿Qué animal ves?</h1>
+        <div class="panel panel-primary">
+            <img src="../../../../assets/esp-ciencias/hormiga.png" alt="Img4">
+            <div class="btn-group btn-group-lg btn-group-justified" role="group" aria-label="...">
+                <label for='step5' id="continue-step5" class="continue">
+                    <div class="btn btn-default btn-success btn-lg" role="button" (click)="Disables(Solucion, result)" [hidden]="show">Siguiente</div>
+                </label>
+            </div>
+        </div>
+        <button (click)="validacion('hormiga',Solucion); " [hidden]="!show">Continuar</button>
+    </div>
+
+    <div id="part5" class="form-group">
+      <h1 class="Instruccion5" style="position: absolute; top: 18%; right: 44%;">¿Qué animal ves?</h1>
+        <div class="panel panel-primary">
+            <img src="../../../../assets/esp-ciencias/catarina.png" alt="Img5">
+            <div class="btn-group btn-group-lg btn-group-justified" role="group" aria-label="...">
+                <label for='step6' id="continue-step6" class="continue">
+                    <div class="btn btn-default btn-success btn-lg" role="button" (click)="Disables(Solucion, result); PantallaFinDialog()" [hidden]="show">Siguiente</div>
+                </label>
+            </div>
+        </div>
+        <button (click)="validacion('catarina',Solucion); " [hidden]="!show">Continuar</button>
+    </div>
+
+    <div id="part6"> 
+    </div>
+  </form>
+  
+
+</div>
+<div class="cube"></div>
+<div class="cube"></div>
+<div class="cube"></div>
+<div class="cube"></div>
+<div class="cube"></div>
+<div class="cube"></div>
+</div>

@@ -1,0 +1,9 @@
+    <mat-card>
+      <mat-card-content>
+        <mat-form-field appearance="fill">
+            <mat-label>Nombre del grupo</mat-label>
+            <input matInput name="nom_group" [(ngModel)]="nombreGrupo">
+          </mat-form-field>
+<button type="submit" mat-raised-button color="primary" [routerLink]="['profesor/', 'ver-grupos']" role="button" (click)="CrearGrupo()">Listo.  </button>
+</mat-card-content>
+</mat-card>

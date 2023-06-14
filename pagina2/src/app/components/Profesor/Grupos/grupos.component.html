@@ -1,0 +1,55 @@
+<main style="height: 80vh;">
+<app-HeaderSidebarP></app-HeaderSidebarP>
+<h1>Grupos</h1>
+<div class="ag-format-container" style="overflow: scroll;height: 104%; width: 95%;">
+    <div class="ag-courses_box">
+      <div *ngFor="let grupo of grupos">
+      <div class="ag-courses_item">
+        <a class="ag-courses-item_link"> 
+          <!-- [routerLink]="['/profesor/',idProfesor, '/grupo/', grupo.idGrupo ]" -->
+          <div class="ag-courses-item_bg"></div>
+  
+          <div class="ag-courses-item_title">
+            <button (click)="nav_grupoesp(grupo.idGrupo)">{{grupo.nombreGrupo}}</button>
+          </div>
+          <div class="ag-autor-item_title">
+            {{usuario.nombre}} {{usuario.apellido1}} {{usuario.apellido2}}
+          </div>
+          <div class="ag-autor-item_title">
+            {{grupo.fechaCreacion}}
+          </div>
+          <div class="ag-courses-item_Vistas-box">
+            Integrantes:
+            <span class="ag-courses-item_Vistas">
+              {{grupo.numAlumnos}}
+            </span>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="ag-courses_item">
+      <a href="#" class="ag-courses-item_link">
+        <div class="ag-courses-item_bg"></div>
+
+        <div class="ag-courses-item_title">
+          Animales
+        </div>
+        <div class="ag-autor-item_title">
+          Silvestre de la O Castillo
+        </div>
+        <div class="ag-courses-item_date-box">
+          Fecha de creación:
+          <span class="ag-courses-item_date">
+            12.10.2022
+          </span>
+        </div>
+      </a>
+    </div>
+    </div>
+  </div>
+
+<div class='air air1  Iborroso' style="z-index: 1;"></div>
+<div class='air air2  Iborroso' style="z-index: 1;"></div>
+<div class='air air3  Iborroso' style="z-index: 1;"></div>
+<div class='air air4  Iborroso' style="z-index: 1;"></div>	
+</main>
