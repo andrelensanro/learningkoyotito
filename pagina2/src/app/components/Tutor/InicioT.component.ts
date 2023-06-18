@@ -19,7 +19,8 @@ export class InicioTComponent implements OnInit{
   constructor(
     public dialog: MatDialog, 
     private loginService:LoginService, 
-    private jwtService:JwtService
+    private jwtService:JwtService,
+    private router: Router
   ){}
   
 
@@ -31,18 +32,7 @@ export class InicioTComponent implements OnInit{
     // traemos los identificadores del usuario en funcion del token 
     this.email       = this.jwtService.getEmail()!;
     this.idUsuario   =  parseInt(this.jwtService.getIdUsuario()!);
-    this.idProfesor  = parseInt(this.jwtService.getIdProfesor()!);
     this.idTutor     =    parseInt(this.jwtService.getIdTutor()!);
-
-    const token = this.loginService.getToken(); /*CRUDO*/
-    
-    const dtoken = this.jwtService.DecodeToken();
-    const email = this.jwtService.getEmail();
-
-
-    console.log("email ", email)
-    console.log("rol ", this.jwtService.getRol())
-
   }
 //constructor(private authService :AuthService){}
 
@@ -72,5 +62,9 @@ export class InicioTComponent implements OnInit{
       localStorage.setItem("clase",valor);
     }
   }
+  nav_busquedas(){
+    this.router.navigate([`tutor/${this.idTutor}/inicio-busquedas`]);
+  }
+
 
 } 
