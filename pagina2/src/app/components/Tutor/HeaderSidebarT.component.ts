@@ -20,9 +20,9 @@ export class  HeaderSidebarTComponent implements OnInit{
     private router: Router,
   ) {}
 
-  SelClase(valor:string): void{
-    localStorage.setItem("clase",valor);
-  }
+  // SelClase(valor:string): void{
+  //   localStorage.setItem("clase",valor);
+  // }
   
   CerrarSesion(){
     localStorage.removeItem('token');
@@ -31,26 +31,34 @@ export class  HeaderSidebarTComponent implements OnInit{
 
   email      : string = '';
   idUsuario  : number = 0;
-  idProfesor : number = 0;
   idTutor    : number = 0;
+  rol        : string = ''
 ngOnInit(): void {
   // traemos los identificadores del usuario en funcion del token 
   this.email       = this.jwtService.getEmail()!;
   this.idUsuario   =  parseInt(this.jwtService.getIdUsuario()!);
-  this.idProfesor  = parseInt(this.jwtService.getIdProfesor()!);
   this.idTutor     =    parseInt(this.jwtService.getIdTutor()!);
 
-  console.log(this.email)
-  console.log(this.idProfesor)
-  console.log(this.idTutor)
-  console.log(this.idUsuario)
 }
 
 nav_config(){
-  this.router.navigate([`/tutor/${this.idUsuario}/config`]);
+
+  this. rol = this.jwtService.getRol()!['authority'];
+
+  if(this.rol === 'ROLE_TUTOR')
+    this.router.navigate([`/tutor/${this.idUsuario}/config`]);
+
+}
+
+nav_Tutorinicio(){
+  this.router.navigate([`/tutor/${this.idTutor}/inicio`]);
+
 }
 
 
+nav_tutor_grupos(){
+  this.router.navigate([`tutor/${this.idTutor}/ver-grupos`]);
+}
 
 
 
