@@ -111,6 +111,7 @@ import { PCCienciasComponent } from './components/Profesor/Clase/VerClase/PCCien
 import { PCMatematicasComponent } from './components/Profesor/Clase/VerClase/PCMatematicas.component';
 import { TutoradosComponent } from './components/Tutor/Tutorados/Tutorados.component';
 
+import { ManageDataService } from './services/manage-data.service';
 
 @NgModule({
   declarations: [
@@ -224,7 +225,7 @@ import { TutoradosComponent } from './components/Tutor/Tutorados/Tutorados.compo
     CrearClaseComponent
 
   ],
-  providers: [ JwtService, UsuarioService,
+  providers: [ JwtService, UsuarioService,ManageDataService,
     {
       provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true
     }

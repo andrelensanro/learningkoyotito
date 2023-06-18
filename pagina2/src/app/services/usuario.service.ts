@@ -51,6 +51,11 @@ export class UsuarioService {
     return this.http.post<Profesor>(`${this.urlProfesor}/consultar`, correo);
   }
 
+  getTutorByIdTutor(idtutor: any):Observable<Tutor>{
+    console.log("0000000000")
+    return this.http.get<Tutor>(`${this.urlTutor}/${idtutor}/consultar`);
+  }
+
   getProfesorByIdProfesor(idProfesor: number):Observable<Profesor>{
     return this.http.get<Profesor>(`${this.urlProfesor}/${idProfesor}/consultar`);
   }
@@ -73,5 +78,11 @@ export class UsuarioService {
     return this.http.put<Usuario>(`${this.url}/${idUsuario}/actualizar-datos-cuenta`, creds);
   }
 
+  deleteUsuarioById(idUsuario: number):Observable<any>{
+    return this.http.delete<any>(`${this.url}/deleteUsuario/${idUsuario}`);
+  }
 
+  getUsuarioByIdProfesor(idProfesor:number):Observable<Usuario>{
+    return this.http.get<Usuario>(`${this.url}/${idProfesor}/consultar-usuario`)
+  }
 }

@@ -62,8 +62,8 @@ const routes: Routes = [
   {path: 'recpContra', component: RecuperarContraComponent},
   {path: 'reestablecimiento', component: ReestContraComponent},
   /*    http:localhost/idusuario/clase-crear/idclase     */
-  {path: 'alumno/inicio', component: InicioAlumnoComponent, /*canActivate: [AuthGuard] */},
-  {path: 'alumno/ver-grupos', component: GruposAComponent, /*canActivate: [AuthGuard]*/}, 
+  {path: 'alumno/:idTutorado/inicio', component: InicioAlumnoComponent, /*canActivate: [AuthGuard] */},
+  {path: 'alumno/:idTutorado/ver-grupos', component: GruposAComponent, /*canActivate: [AuthGuard]*/}, 
   {path: 'alumno/:idTutorado/ver-clases', component: ClasesAComponent /* canActivate: [AuthGuard] */},
   {path: 'alumno/:idTutorado/reproducir-clase', component: VerClaseAComponent /*canActivate: [AuthGuard]*/ },
 
@@ -78,7 +78,10 @@ const routes: Routes = [
   {path: 'tutor/:idUsuario/inicio', component: InicioTComponent, canActivate: [AuthGuard]},
   {path: 'tutor/:idTutor/ver-grupos', component: GruposTComponent, canActivate: [AuthGuard]},
   {path: 'tutor/:idTutor/ver-clases', component: ClasesComponent, canActivate: [AuthGuard]},
-  {path: 'tutor/:idTutor/previa-clase', component: PrevisualizarClaseTComponent, canActivate: [AuthGuard]},
+  {path: 'tutor/:idTutor/previa-clase/:idClase', component: PrevisualizarClaseTComponent, canActivate: [AuthGuard]},
+  
+
+
   
   {path: 'tutor/:idTutor/previa-clase/artes', component:  ArtesPrevisualizarClaseTComponent, canActivate: [AuthGuard]},
   {path: 'tutor/:idTutor/previa-clase/ciencias', component: CienciasPrevisualizarClaseTComponent, canActivate: [AuthGuard]},
@@ -89,7 +92,7 @@ const routes: Routes = [
   
   {path: 'tutor/:idTutor/tutorados', component: ObjetosPrevisualizarClaseTComponent, canActivate: [AuthGuard]},
   
-  {path: 'home/busquedas', component: BusquedasTComponent, canActivate: [AuthGuard]}, // BUSQUEDA DE CLASES -- LO OCUPO PARA REDIRIGIR A LA PERSONA CUANDO APLICA UN FLITRO
+  {path: 'tutor/:idTutor/inicio-busquedas', component: BusquedasTComponent, canActivate: [AuthGuard]}, // BUSQUEDA DE CLASES -- LO OCUPO PARA REDIRIGIR A LA PERSONA CUANDO APLICA UN FLITRO
   /*filtrados por institucion y demas se muestran en esta, probablemnte cambie el path, para estos dos */
   {path: 'home/ver-vista-previa/:idClase', component: PrevisualizarClaseComponent, canActivate: [AuthGuard]},
 
@@ -121,9 +124,8 @@ const routes: Routes = [
   {path: 'profesor/:idProfesor/ver-clase/mates', component: PCMatematicasComponent, canActivate: [AuthGuard]},
 
 
-//  {path: '**', redirectTo: 'profesor/inicio'},
-  {path: '**', redirectTo: '/home'},
-//  {path: '**', redirectTo: 'tutor/inicio'}
+  // {path: '**', redirectTo: 'profesor/inicio'},
+  {path: '**', redirectTo: '/home'}
 ];
 
 @NgModule({

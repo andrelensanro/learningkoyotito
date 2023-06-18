@@ -29,8 +29,15 @@
 
 
 <nav id="menu">
-  <a routerLink="" (click)="nav_inicio()"><mat-icon>home</mat-icon>  Inicio</a><a routerLink="" (click)="tutorados()" value="Tutorados"><mat-icon>mood</mat-icon>  Tutorados </a>
-<a routerLink="" (click)="nav_ver_grupos()" class="notification"><mat-icon>group</mat-icon>  Grupos  <span class="badge">0</span></a>
-<a routerLink="" (click)="nav_ver_clases()" value="Aprobados" (click)="SelClase('Clases aprobadas')"><mat-icon>done_all</mat-icon>  Clases aprobadas</a>
+<a (click)="nav_Tutorinicio()" type="button" style="cursor: pointer"><mat-icon>home</mat-icon>  Inicio</a>
+<!--(click)="nav_Tutorinicio()" [routerLink]="['/tutor', idUsuario, 'inicio']" -->
+<!-- <a   (click)="nav_Tutorinicio()" type="button" style="cursor: pointer"  for="navcheck" aria-hidden="true"><mat-icon>thumb_up_alt</mat-icon>  Clases que me gustan</a>
+(click)= "Me gusta" [routerLink]="['/tutor', idUsuario, 'inicio']"
+<a   (click)="nav_Tutorinicio()" type="button" style="cursor: pointer"  value="Historial" ><mat-icon>history</mat-icon>  Historial  </a>
+href="/Tutor/Clases"  (click)="SelClase('Historial')" -->
+<a   (click)="nav_tutor_grupos()" type="button" style="cursor: pointer"  class="notification"><mat-icon>group</mat-icon>  Grupos  <span class="badge">0</span></a>
+<!-- href="/GruposT" -->
+<!-- <a   (click)="nav_Tutorinicio()" type="button" style="cursor: pointer"  value="Aprobados" ><mat-icon>done_all</mat-icon>  Clases aprobadas</a>
+href="/Tutor/Clases" (click)="SelClase('Clases aprobadas')" -->
 </nav>
 

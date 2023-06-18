@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Profesor } from 'app/models/profesor';
+import { Usuario } from 'app/models/usuario';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -20,5 +21,9 @@ export class ProfeService {
   actualizarCorreoContacto(profesor: Profesor):Observable<Profesor>{
     return this.http.put<Profesor>(`${this.url}/${profesor.idProfesor}/actualizar-correo`, profesor);
   }
+
+
+
+
 
 }

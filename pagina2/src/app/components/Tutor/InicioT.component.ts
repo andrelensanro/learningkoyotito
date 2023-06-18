@@ -20,25 +20,17 @@ export class InicioTComponent implements OnInit{
     public dialog: MatDialog, 
     private loginService:LoginService, 
     private jwtService:JwtService,
-    public router: Router
+    private router: Router
   ){}
   email      : string = '';
   idUsuario  : number = 0;
   idProfesor : number = 0;
   idTutor    : number = 0;
   ngOnInit(): void {
-    // console.log("token desde inicio tutor ", this.loginService.getToken())
-    const token = this.loginService.getToken(); /*CRUDO*/
-    
-    const dtoken = this.jwtService.DecodeToken();
-    const email = this.jwtService.getEmail();
-    console.log("email ", email)
-    console.log("rol ", this.jwtService.getRol())
+    // traemos los identificadores del usuario en funcion del token 
     this.email       = this.jwtService.getEmail()!;
     this.idUsuario   =  parseInt(this.jwtService.getIdUsuario()!);
-    this.idProfesor  = parseInt(this.jwtService.getIdProfesor()!);
     this.idTutor     =    parseInt(this.jwtService.getIdTutor()!);
-
   }
 //constructor(private authService :AuthService){}
 
@@ -68,6 +60,10 @@ export class InicioTComponent implements OnInit{
       localStorage.setItem("clase",valor);
     }
   }
+  nav_busquedas(){
+    this.router.navigate([`tutor/${this.idTutor}/inicio-busquedas`]);
+  }
+
 
   recomendados(){
       this.router.navigate([`tutor/${this.idTutor}/ver-clases`]);

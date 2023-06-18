@@ -5,32 +5,39 @@
   <section id="Izquierdo" style="padding:20px 0px; z-index: 1;">
     <div class="ag-format-container" style="overflow: scroll;height: 104%; width: 95%;">
       <div class="ag-courses_box">
-    <div class="ag-courses_item">
-      <a href="/BusquedaT" class="ag-courses-item_link">
-        <div class="ag-courses-item_bg"></div>
 
-        <div class="ag-courses-item_title">
-          Clase de matematicas
-        </div>
-        <div class="ag-autor-item_title">
-          José Alfredo UnNombreMuyLargo Jimenez
-        </div>
-        <div class="ag-courses-item_Vistas-box">
-          Vistas:
-          <span class="ag-courses-item_Vistas">
-            80
-          </span>
-        </div>
-        <div class="ag-courses-item_date-box">
-          Likes:
-          <span class="ag-courses-item_date">
-            80
-          </span>
-        </div>
-      </a>
-    </div>
+        <div *ngFor="let clase of clases; index as indice">
 
-    <div class="ag-courses_item">
+          <div class="ag-courses_item">
+            <a  class="ag-courses-item_link">
+              <!-- href="/BusquedaT" -->
+              <div class="ag-courses-item_bg"></div>
+                {{indice}} {{clase.nombreClase}}
+              <div class="ag-courses-item_title" >
+                <!-- {{usuarios[indice].nombre}} {{usuarios[indice].apellido1}} {{usuarios[indice].apellido2}} -->
+              </div>
+              <div class="ag-autor-item_title">
+                
+              </div>
+              <div class="ag-courses-item_Vistas-box">
+                Vistas:
+                <span class="ag-courses-item_Vistas">
+                  80
+                </span>
+              </div>
+              <div class="ag-courses-item_date-box">
+                Likes:
+                <span class="ag-courses-item_date">
+                  80
+                </span>
+              </div>
+            </a>
+          </div>
+
+        </div>
+
+
+    <!-- <div class="ag-courses_item">
       <a href="/BusquedaT" class="ag-courses-item_link">
         <div class="ag-courses-item_bg"></div>
 
@@ -47,9 +54,9 @@
           </span>
         </div>
       </a>
-    </div>
+    </div> -->
 
-    <div class="ag-courses_item">
+    <!-- <div class="ag-courses_item">
       <a href="/BusquedaT" class="ag-courses-item_link">
         <div class="ag-courses-item_bg"></div>
 
@@ -66,9 +73,9 @@
           </span>
         </div>
       </a>
-    </div>
+    </div> -->
 
-    <div class="ag-courses_item">
+    <!-- <div class="ag-courses_item">
       <a href="/BusquedaT" class="ag-courses-item_link">
         <div class="ag-courses-item_bg"></div>
 
@@ -85,9 +92,9 @@
           </span>
         </div>
       </a>
-    </div>
+    </div> -->
 
-    <div class="ag-courses_item">
+    <!-- <div class="ag-courses_item">
       <a href="/BusquedaT" class="ag-courses-item_link">
         <div class="ag-courses-item_bg"></div>
         <div class="ag-autor-item_title">
@@ -104,9 +111,9 @@
           </span>
         </div>
       </a>
-    </div>
+    </div> -->
 
-    <div class="ag-courses_item">
+    <!-- <div class="ag-courses_item">
       <a href="/BusquedaT" class="ag-courses-item_link">
         <div class="ag-courses-item_bg"></div>
         <div class="ag-autor-item_title">
@@ -129,9 +136,9 @@
           José Alfredo UnNombreMuyLargo Jimenez
         </div>
       </a>
-    </div>
+    </div> -->
 
-    <div class="ag-courses_item">
+    <!-- <div class="ag-courses_item">
       <a href="/BusquedaT" class="ag-courses-item_link">
         <div class="ag-courses-item_bg"></div>
 
@@ -148,7 +155,7 @@
           </span>
         </div>
       </a>
-    </div>
+    </div> -->
 
   </div>
 
