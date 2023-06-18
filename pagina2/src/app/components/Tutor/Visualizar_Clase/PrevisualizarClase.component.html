@@ -3,27 +3,28 @@
     <div class="form-group Derecha">
         <div class="panel panel-primary">
           <div class="panel-heading">
-            <h3 class="panel-title">Matemáticas I </h3>
+            <h3 class="panel-title">{{clase.nombreClase}}</h3>
             <div>
-                <h3>Tags within a form group</h3>
+                <h3>Tags de la clase</h3>
                     <tag-input
-                    [ngModel]="['Matemáticas', '1°', 'Español']"
+                    [ngModel]="tags"
                         [disable]="true"
                          [removable]="false"
                         [maxItems]="3">
                     </tag-input>
             </div>
             <div style="align-content: center;">
-                <mat-icon>portrait</mat-icon>&nbsp;&nbsp;José Luis Rodríguez
+                <mat-icon>portrait</mat-icon>&nbsp;&nbsp;{{usuario.nombre}} {{usuario.apellido1}} {{usuario.apellido2}}
             </div>
             <div style="align-content: center;">
-                <mat-icon>school</mat-icon>&nbsp;&nbsp;Escuela técnica Jardín de Niños: "Niños héroes".
+                <mat-icon>school</mat-icon>&nbsp;&nbsp;{{clase.profesor.institucion}}
             </div>
             <div style="align-content: center;">
-                <mat-icon>mail</mat-icon>&nbsp;&nbsp;MailDeContacto@profesor.com.nh.mx
+                <mat-icon>mail</mat-icon>&nbsp;&nbsp;{{clase.profesor.correoContacto}}
             </div>
-            <button class="btnOP" style="--clr:#39FF14;" (click)="this.MeGusta()" ><span><mat-icon>thumb_up_alt</mat-icon>  Me gusta</span><i></i></button><br>
-            <button class="btnOP" style="--clr:#FF44CC" (click)="AprobarDialog()"><span><mat-icon>done</mat-icon>  Aprobar.</span><i></i></button><br>  <button class="btnOP" style="--clr:#8A2BE2" (click)="DenunciaDialog()"><span><mat-icon>report_problem</mat-icon>  Denunciar</span><i></i></button><br>
+            <!-- <button class="btnOP" style="--clr:#39FF14;" (click)="this.MeGusta()" ><span><mat-icon>thumb_up_alt</mat-icon>  Me gusta</span><i></i></button><br> -->
+            <button class="btnOP" style="--clr:#FF44CC" (click)="AprobarDialog()"><span><mat-icon>done</mat-icon>  Aprobar.</span><i></i></button><br>  
+            <button class="btnOP" style="--clr:#8A2BE2" (click)="DenunciaDialog()"><span><mat-icon>report_problem</mat-icon>  Denunciar</span><i></i></button><br>
           </div>
         </div>
     </div>
