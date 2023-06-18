@@ -54,6 +54,7 @@ export class UsuarioService {
   }
 
   getTutorByIdTutor(idtutor: any):Observable<Tutor>{
+    console.log("0000000000")
     return this.http.get<Tutor>(`${this.urlTutor}/${idtutor}/consultar`);
   }
 
@@ -83,5 +84,7 @@ export class UsuarioService {
     return this.http.delete<any>(`${this.url}/deleteUsuario/${idUsuario}`);
   }
 
-
+  getUsuarioByIdProfesor(idProfesor:number):Observable<Usuario>{
+    return this.http.get<Usuario>(`${this.url}/${idProfesor}/consultar-usuario`)
+  }
 }

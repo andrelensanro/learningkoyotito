@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { Clase } from '../models/clase';
 import { HttpClient } from '@angular/common/http';
 import { UsuarioService } from './usuario.service';
+import { Mensaje } from 'app/models/mensaje';
 
 @Injectable({
   providedIn: 'root'
@@ -44,5 +45,22 @@ export class ClaseService {
     return this.http.get(`${this.url}/clase/${idClase}/getNumVisitas`)
   }
 
+  findAll():Observable<Clase[]>{
+    return this.http.get<Clase[]>(`${this.url}/todas-clases`);
+  }
+
+
+  aprobarClase(idClase:number):Observable<Mensaje>{
+    return this.http.get<Mensaje>(`${this.url}/aprobar-clase/${idClase}`);
+  }
+
+  findById(idClase:number):Observable<Clase>{
+    return this.http.get<Clase>(`${this.url}/obtener-clase/${idClase}`)
+  }
+
+
+  findTagByIdClase(idClase:number):Observable<any>{
+    return this.http.get<any>(`${this.url}/obtener-tags/${idClase}`)
+  }
 
 }

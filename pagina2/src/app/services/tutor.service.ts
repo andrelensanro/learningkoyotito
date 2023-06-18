@@ -8,13 +8,21 @@ import { Observable } from 'rxjs';
 })
 export class TutorService {
 
-  private urlTutor = "http://localhost:8098/usuario"
+  private url = "http://localhost:8098/usuario"
+  private urlTutor = "http://localhost:8098/tutor"
 
   constructor(
     private http: HttpClient
   ) { }
 
   findTutoradoByEmailTutor(correoTutor:string, pseudonimo:string):Observable<Tutorado>{
-    return this.http.post<Tutorado>(`${this.urlTutor}/consultar-tutorado/${pseudonimo}`, correoTutor);
+    return this.http.post<Tutorado>(`${this.url}/consultar-tutorado/${pseudonimo}`, correoTutor);
   }
+  addTutorado(idTutor:number, pseudonimo: string):Observable<Tutorado>{
+    return this.http.get<Tutorado>(`${this.urlTutor}/${idTutor}/crear-tutorado/${pseudonimo}`);
+  }
+  findAllTutorados(idTutor:number):Observable<any>{
+    return this.http.get<any>(`${this.urlTutor}/${idTutor}/consultar-tutorados`);
+  }
+
 }
