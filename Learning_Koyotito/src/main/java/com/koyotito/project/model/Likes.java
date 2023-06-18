@@ -21,6 +21,9 @@ public class Likes {
 	
 	@ManyToOne 
 	private Profesor profesor;
+	
+//	@ManyToOne
+//	private Tutor tutor; 
 
 	public Likes() {
 		
@@ -31,11 +34,11 @@ public class Likes {
 		this.clase = clase;
 		this.tutorado = tutorado;
 		this.profesor = profesor;
+//		this.tutor = tutor;
 	}
 	@Override
 	public String toString() {
-		return "Likes [idLike=" + idLike + ", clase=" + clase + ", tutorado=" + tutorado + ", profesor=" + profesor
-				+ "]";
+		return "Likes [idLike=" + idLike + ", clase=" + clase + ", tutorado=" + tutorado + ", profesor=" + profesor + "]" ;
 	}
 	public Long getIdLike() {
 		return idLike;
@@ -61,4 +64,10 @@ public class Likes {
 	public void setProfesor(Profesor profesor) {
 		this.profesor = profesor;
 	}
+//	public Tutor getTutor() {
+//		return tutor;
+//	}
+//	public void setTutor(Tutor tutor) {
+//		this.tutor = tutor;
+//	}
 }

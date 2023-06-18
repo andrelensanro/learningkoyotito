@@ -27,6 +27,7 @@ import com.koyotito.project.model.Archivo;
 import com.koyotito.project.model.Clase;
 import com.koyotito.project.model.DenunciaClase;
 import com.koyotito.project.model.Likes;
+import com.koyotito.project.model.Mensaje;
 import com.koyotito.project.model.Profesor;
 import com.koyotito.project.model.RelClaseTag;
 import com.koyotito.project.model.RelGrupoClase;
@@ -264,6 +265,76 @@ public class ClaseController {
 	@GetMapping("clase/{idClase}/getNumVisitas")
 	public Long getNumVisitas(@PathVariable("idClase") Long idClase) {
 		return claseService.getNumVisitas(idClase);
+	}
+	
+	@GetMapping("clase/denunciar-clase/{idClase}")
+	public Mensaje denunciar_clase(@PathVariable("idClase") Long idClase,@RequestParam("motivo") String motivo) {
+		
+		logger.info("motivo " + motivo);
+		DenunciaClase dc = new DenunciaClase();
+		dc.setMotivo(motivo);
+		
+		
+		LocalDateTime hoy = LocalDateTime.now();  
+		Instant instant = hoy.atZone(ZoneId.systemDefault()).toInstant();
+		Date date = Date.from(instant);
+		
+		dc.setFechaDenuncia(date);
+		Clase c = new Clase();
+		c = claseService.findById(idClase);
+		// VERIFICACION DE QUE LA CLASE DEVUELTA NO SEA NULA
+		dc.setClase(c);
+		
+		Mensaje msj = new Mensaje();
+		msj.setMsg("Se denunció la clase de manera correcta. Evaluaremos el contenido. Muchas Gracias.");
+		msj.setTipo(1);
+		if(denunciaService.save(dc)==null) {
+			msj.setMsg("En este momento no se puede hacer la denuncia.");
+			msj.setTipo(0);
+		}
+		return msj;
+	}
+	
+	@GetMapping("clase/aprobar-clase/{idClase}")
+	public Mensaje aprobarClase(@PathVariable("idClase") Long idClase) {
+		Clase clase = new Clase();
+		clase = claseService.findById(idClase);
+		
+		Mensaje msj = new Mensaje();
+		msj.setMsg("Se aprobó la clase de manera correcta. Gracias.");
+		msj.setTipo(1);
+		
+		
+		if(clase!=null) {
+			String estado = clase.getEstado();
+			if(estado.charAt(1)=='1') { // primero debe estar publicado
+				clase.setEstado("11");
+				claseService.save(clase);
+			}else {
+				msj.setMsg("Ha ocurrido un error, esta clase aún no puede ser aprobada ");
+				msj.setTipo(0);
+			}
+		}else {
+			msj.setMsg("En este momento no se puede aprobar la clase.");
+			msj.setTipo(0);
+		}
+		
+		return msj;
+	}
+	
+	@GetMapping("clase/obtener-clase/{idClase}")
+	public Clase findById(@PathVariable("idClase") Long idClase) {
+		return claseService.findById(idClase);
+	}
+	
+	@GetMapping("clase/obtener-tags/{idClase}")
+	public List<String> findTagsByIdClase(@PathVariable("idClase") Long idClase) {
+		var tags = new ArrayList<String>();
+		List<RelClaseTag> r = relclasetagService.findByClaseIdClase(idClase);
+		for(RelClaseTag rr: r) {
+			tags.add(rr.getTag().getNombre());
+		}
+		return tags;
 	}
 
 }

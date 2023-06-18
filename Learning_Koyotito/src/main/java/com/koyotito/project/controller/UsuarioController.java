@@ -199,6 +199,11 @@ public class UsuarioController{
 		return msg;
 	}
 	
+	@GetMapping("/{idProfesor}/consultar-usuario")
+	public Usuario findUsuarioByIdProfesor(@PathVariable("idProfesor") Long idProfesor) {
+		logger.info("0000000 el id del profesor es " + idProfesor);
+		return usuarioService.findUsuarioByIdProfesor(idProfesor);
+	}
 	
 
 }

@@ -19,4 +19,7 @@ public interface UsuarioRepo extends JpaRepository<Usuario, Long>{
 	@Query(value = "SELECT prof_id FROM usuario WHERE usuario.idUsuario=:idUsuario", nativeQuery=true)
 	public Long findById_IdProfesor(Long idUsuario);
 	
+	
+	@Query(value="SELECT * from usuario where usuario.prof_id=:idProfesor", nativeQuery = true)
+	public Usuario obtenerUsuarioByIdProfesor (Long idProfesor);
 }

@@ -39,6 +39,8 @@ public class DenunciaService {
 			return denuncia.get();
 		return null;
 	}
+	
+	
 
 
 }

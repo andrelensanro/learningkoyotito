@@ -14,7 +14,7 @@ import com.koyotito.project.repository.UsuarioRepo;
 import ch.qos.logback.classic.Logger;
 
 @Service
-public class UsuarioService implements IntUsuarioService{
+public class UsuarioService{
 	
 	
 	
@@ -58,7 +58,12 @@ public class UsuarioService implements IntUsuarioService{
 		return usuarioRepo.findById_IdProfesor(idUsuario);
 	}
 
-	
+	public Usuario findUsuarioByIdProfesor(Long idProfesor) {
+		
+		Usuario usr = usuarioRepo.obtenerUsuarioByIdProfesor(idProfesor);
+		
+		return usr;
+	}
 
 
 }
