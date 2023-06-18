@@ -49,9 +49,19 @@ ngOnInit(): void {
 nav_config(){
   this.router.navigate([`/tutor/${this.idUsuario}/config`]);
 }
-
-
-
+nav_inicio(){
+  this.router.navigate([`/tutor/${this.idUsuario}/inicio`]);
+}
+nav_ver_clases(){
+  this.router.navigate([`/tutor/${this.idUsuario}/ver-clases`]);
+  location.reload()
+}
+nav_ver_grupos(){
+  this.router.navigate([`/tutor/${this.idUsuario}/ver-grupos`]);
+}
+tutorados(){
+  this.router.navigate([`/tutor/${this.idUsuario}/tutorados`]);
+}
 
 
 }

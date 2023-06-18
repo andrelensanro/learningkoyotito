@@ -33,8 +33,8 @@ import { VerClaseAComponent } from './components/alumno/VerClase/VerClase.compon
 import { MediaComponent } from './media/media.component';
 import { AuthGuard } from './helpers/auth.guard';
 import { MatesPrevisualizarClaseComponent } from './components/Profesor/Visualizar_Clase/MatesPrevisualizar.component';
-import {ArtesPrevisualizarComponent } from './components/Profesor/Visualizar_Clase/ArtesPrevisualizar.component';
-import { ObjetosPrevisualizarComponent } from './components/Profesor/Visualizar_Clase/ObjetosPrevisualizar.component';
+import { ArtesPrevisualizarClaseComponent } from './components/Profesor/Visualizar_Clase/ArtesPrevisualizar.component';
+import { ObjetosPrevisualizarClaseComponent } from './components/Profesor/Visualizar_Clase/ObjetosPrevisualizar.component';
 import { InglesPrevisualizarClaseComponent } from './components/Profesor/Visualizar_Clase/InglesPrevisualizar.component';
 import { CienciasPrevisualizarClaseComponent } from './components/Profesor/Visualizar_Clase/CienciasPrevisualizar.component';
 import { LogicaPrevisualizarClaseComponent } from './components/Profesor/Visualizar_Clase/LogicaPrevisualizar.component';
@@ -55,6 +55,7 @@ import { CLogicaComponent } from './components/alumno/VerClase/CLogica.component
 import { CInglesComponent } from './components/alumno/VerClase/CIngles.component';
 import { CCienciasComponent } from './components/alumno/VerClase/CCiencias.component';
 import { ArtesPrevisualizarClaseTComponent } from './components/Tutor/Visualizar_Clase/ArtesPrevisualizar.component';
+import { TutoradosComponent } from './components/Tutor/Tutorados/Tutorados.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent },
@@ -84,7 +85,9 @@ const routes: Routes = [
   {path: 'tutor/:idTutor/previa-clase/ingles', component:   InglesPrevisualizarClaseTComponent, canActivate: [AuthGuard]},
   {path: 'tutor/:idTutor/previa-clase/logica', component: LogicaPrevisualizarClaseTComponent, canActivate: [AuthGuard]},
   {path: 'tutor/:idTutor/previa-clase/mates', component: MatesPrevisualizarClaseTComponent, canActivate: [AuthGuard]},
-  {path: 'tutor/:idTutor/previa-clase/objetos', component: ObjetosPrevisualizarClaseTComponent, canActivate: [AuthGuard]},
+  {path: 'tutor/:idTutor/previa-clase/objetos', component: TutoradosComponent, canActivate: [AuthGuard]},
+  
+  {path: 'tutor/:idTutor/tutorados', component: ObjetosPrevisualizarClaseTComponent, canActivate: [AuthGuard]},
   
   {path: 'home/busquedas', component: BusquedasTComponent, canActivate: [AuthGuard]}, // BUSQUEDA DE CLASES -- LO OCUPO PARA REDIRIGIR A LA PERSONA CUANDO APLICA UN FLITRO
   /*filtrados por institucion y demas se muestran en esta, probablemnte cambie el path, para estos dos */
@@ -99,27 +102,28 @@ const routes: Routes = [
   {path: 'profesor/:idProfesor/ver-historial', component: HistorialPComponent, canActivate: [AuthGuard]},
   {path: 'profesor/:idProfesor/mis-clases', component: MisClasesComponent, canActivate: [AuthGuard]},
   {path: 'profesor/:idProfesor/mi-multimedia', component: MediaComponent, canActivate: [AuthGuard] },
-  {path: 'profesor/:idProfesor/ver-clase/:idClase', component: VerClaseComponent, canActivate: [AuthGuard]},
+  //{path: 'profesor/:idProfesor/ver-clase/:idClase', component: VerClaseComponent, canActivate: [AuthGuard]},
   {path: 'profesor/:idProfesor/ver-denuncias', component: DenunciasPagComponent, canActivate: [AuthGuard]},
   {path: 'profesor/:idProfesor/editar-clase/:idClase', component: EditarClaseComponent, canActivate: [AuthGuard]},
 
-  {path: 'profesor/:idProfesor/previa-mi-clase/artes', component: ArtesPrevisualizarComponent, canActivate: [AuthGuard] },
-  {path: 'profesor/:idProfesor/previa-mi-clase/objetos', component: ObjetosPrevisualizarComponent, canActivate: [AuthGuard] },
+  {path: 'profesor/:idProfesor/previa-mi-clase/artes', component: ArtesPrevisualizarClaseComponent, canActivate: [AuthGuard] },
+  {path: 'profesor/:idProfesor/previa-mi-clase/objetos', component: ObjetosPrevisualizarClaseComponent, canActivate: [AuthGuard] },
   {path: 'profesor/:idProfesor/previa-mi-clase/ingles', component: InglesPrevisualizarClaseComponent, canActivate: [AuthGuard] },
   {path: 'profesor/:idProfesor/previa-mi-clase/ciencias', component: CienciasPrevisualizarClaseComponent, canActivate: [AuthGuard] },
   {path: 'profesor/:idProfesor/previa-mi-clase/logica', component: LogicaPrevisualizarClaseComponent, canActivate: [AuthGuard] },
   {path: 'profesor/:idProfesor/previa-mi-clase/mates', component: MatesPrevisualizarClaseComponent, canActivate: [AuthGuard] },
   
-  {path: 'profesor/:idProfesor/ver-clase-artes', component: PCArtesComponent, canActivate: [AuthGuard]},
-  {path: 'profesor/:idProfesor/ver-clase-objetos', component: PCObjetosComponent, canActivate: [AuthGuard]},
-  {path: 'profesor/:idProfesor/ver-clase-ingles', component: PCInglesComponent, canActivate: [AuthGuard]},
-  {path: 'profesor/:idProfesor/ver-clase-ciencias', component: PCCienciasComponent, canActivate: [AuthGuard]},
-  {path: 'profesor/:idProfesor/ver-clase-logica', component: PCLogicaComponent, canActivate: [AuthGuard]},
-  {path: 'profesor/:idProfesor/ver-clase-mates', component: PCMatematicasComponent, canActivate: [AuthGuard]},
+  {path: 'profesor/:idProfesor/ver-clase/artes', component: PCArtesComponent, canActivate: [AuthGuard]},
+  {path: 'profesor/:idProfesor/ver-clase/objetos', component: PCObjetosComponent, canActivate: [AuthGuard]},
+  {path: 'profesor/:idProfesor/ver-clase/ingles', component: PCInglesComponent, canActivate: [AuthGuard]},
+  {path: 'profesor/:idProfesor/ver-clase/ciencias', component: PCCienciasComponent, canActivate: [AuthGuard]},
+  {path: 'profesor/:idProfesor/ver-clase/logica', component: PCLogicaComponent, canActivate: [AuthGuard]},
+  {path: 'profesor/:idProfesor/ver-clase/mates', component: PCMatematicasComponent, canActivate: [AuthGuard]},
 
 
-  {path: '**', redirectTo: 'profesor/inicio'},
-  {path: '**', redirectTo: 'tutor/inicio'}
+//  {path: '**', redirectTo: 'profesor/inicio'},
+  {path: '**', redirectTo: '/home'},
+//  {path: '**', redirectTo: 'tutor/inicio'}
 ];
 
 @NgModule({

@@ -113,5 +113,10 @@ Disables(Solucion:InnerHTML, dos:InnerHTML){
             });
         }
 
-        
+        TextToVoice(mensaje: string){
+            var msg = new SpeechSynthesisUtterance();
+            msg.text = mensaje;
+            window.speechSynthesis.speak(msg);
+        }
+
 }  

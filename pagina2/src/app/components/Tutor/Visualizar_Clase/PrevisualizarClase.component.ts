@@ -29,9 +29,10 @@ import { AprobarTComponent } from "../Aprobar/Aprobar.component";
 
 
     AprobarDialog(): void{
-      const dialogRef = this.dialog.open(AprobarTComponent, {
+      //const dialogRef = this.dialog.open(AprobarTComponent, {
         //  data: {name: this.name},
-        });
+      //  });
+      this.toastr.info('Aprobado para todos los tutorados', 'Éxito',{timeOut: 7000});
     }
     MeGusta(){
       this.toastr.success('Guardado en Me gusta.', 'Éxito',{timeOut: 7000});

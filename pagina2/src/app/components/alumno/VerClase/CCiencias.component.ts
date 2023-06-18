@@ -112,18 +112,4 @@ Disables(Solucion:InnerHTML, dos:InnerHTML){
             //  data: {name: this.name},
             });
         }
-
-
-        upload(event: any){
-            const file = event.target.files[0];
-            if(file){
-              const formData = new FormData();
-              formData.append('file', file);
-        
-              this.mediaService.uploadFile(formData, this.idUsuario!)
-                  .subscribe(response => {
-                    this.url=response.url;
-                  })
-            }
-          }
 }  

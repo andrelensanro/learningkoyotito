@@ -46,9 +46,9 @@ export class ConfigPComponent implements OnInit{
       tutor_id:0,
 
     }
-    idUsuario:number = 0;
+
   ngOnInit(): void {
-    this.idUsuario   = parseInt(this.jwtService.getIdUsuario()!);
+
     const auth = this.jwtService.getEmail();
 
     // console.log("email del usuario loggeado " + auth!);
@@ -149,20 +149,6 @@ export class ConfigPComponent implements OnInit{
     }
 
 
-  }
-  eliminar_cuenta(){
-    this.usuarioService.deleteUsuarioById(this.idUsuario)
-    .subscribe((msg:Mensaje) => {
-      if(msg.tipo==1){
-        this.toastr.success("Se elimino la cuenta :( esperamos que vuelvas pronto.", 'Koyotito',{timeOut: 17000});
-      }else{
-        this.toastr.error( "En este momento no es posible eliminar tu cuenta", 'Koyotito',{timeOut: 7000});
-      }
-    });
-  }
-  nav_inicio(){
-    localStorage.removeItem('token');
-    location.reload()
   }
 
 }

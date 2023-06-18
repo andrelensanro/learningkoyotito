@@ -74,7 +74,7 @@ export class GrupoEspComponent implements OnInit{
     this.grupoService.getAllClaseByIdGrupo(this.idGrupo)
     .subscribe(( clases : any[] ) => {
       this.clases = clases  
-      // console.log("tamaño "+ this.clases.length)
+      console.log("tamaño "+ this.clases.length)
     });
     
     

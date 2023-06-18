@@ -61,12 +61,12 @@ import { RepCrearClaseComponent } from './components/Profesor/Clase/ClasesProfes
 
 import { PrevisualizarClaseComponent } from './components/Profesor/Visualizar_Clase/PrevisualizarClase.component';
 
-import { ArtesPrevisualizarComponent    } from './components/Profesor/Visualizar_Clase/ArtesPrevisualizar.component';
+import { ArtesPrevisualizarClaseComponent    } from './components/Profesor/Visualizar_Clase/ArtesPrevisualizar.component';
 import { CienciasPrevisualizarClaseComponent } from './components/Profesor/Visualizar_Clase/CienciasPrevisualizar.component';
 import { InglesPrevisualizarClaseComponent   } from './components/Profesor/Visualizar_Clase/InglesPrevisualizar.component';
 import { LogicaPrevisualizarClaseComponent   } from './components/Profesor/Visualizar_Clase/LogicaPrevisualizar.component';
 import { MatesPrevisualizarClaseComponent    } from './components/Profesor/Visualizar_Clase/MatesPrevisualizar.component';
-import { ObjetosPrevisualizarComponent  } from './components/Profesor/Visualizar_Clase/ObjetosPrevisualizar.component';
+import { ObjetosPrevisualizarClaseComponent  } from './components/Profesor/Visualizar_Clase/ObjetosPrevisualizar.component';
 
 
 
@@ -109,6 +109,7 @@ import { PCInglesComponent } from './components/Profesor/Clase/VerClase/PCIngles
 import { PCLogicaComponent } from './components/Profesor/Clase/VerClase/PCLogica.component';
 import { PCCienciasComponent } from './components/Profesor/Clase/VerClase/PCCiencias.component';
 import { PCMatematicasComponent } from './components/Profesor/Clase/VerClase/PCMatematicas.component';
+import { TutoradosComponent } from './components/Tutor/Tutorados/Tutorados.component';
 
 
 @NgModule({
@@ -182,12 +183,13 @@ import { PCMatematicasComponent } from './components/Profesor/Clase/VerClase/PCM
     CienciasPrevisualizarClaseTComponent,
     LogicaPrevisualizarClaseTComponent  ,
     InglesPrevisualizarClaseTComponent  ,
-    ArtesPrevisualizarComponent,    
+    ArtesPrevisualizarClaseComponent,    
     CienciasPrevisualizarClaseComponent ,
     InglesPrevisualizarClaseComponent   ,
     LogicaPrevisualizarClaseComponent   ,
     MatesPrevisualizarClaseComponent    ,
-    ObjetosPrevisualizarComponent  ,
+    ObjetosPrevisualizarClaseComponent  ,
+    TutoradosComponent
       ],
   imports: [
     BrowserModule,

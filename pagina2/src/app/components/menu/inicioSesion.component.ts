@@ -49,7 +49,7 @@ export class inicioSesionComponent{
           this.redirecccionarUsr(usr);
         })
       }
-    });
+    }, (err) => this.toastr.error( "Algún dato fue erróneo.", 'Algo salió mal.',{timeOut: 7000}));
   }
 
   getToken(){

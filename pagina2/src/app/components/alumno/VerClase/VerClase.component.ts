@@ -106,4 +106,12 @@ Disables(Solucion:InnerHTML, dos:InnerHTML){
             //  data: {name: this.name},
             });
         }
+
+
+
+        TextToVoice(mensaje: string){
+            var msg = new SpeechSynthesisUtterance();
+            msg.text = mensaje;
+            window.speechSynthesis.speak(msg);
+        }
 }  

@@ -24,13 +24,17 @@
     margin: 0 auto 10px auto;
   }
   .back {
-    float: left;
+    position: absolute;
+    top: 50%;
+    right: 92.5%;
   }
   .continue {
-    float: right;
+    position: absolute;
+    top: 50%;
+    right: 5%;
   }
 }
-img{
+img, video{
   background-color: #e6e6e9;
   position: absolute;
   top: 54%;
@@ -270,10 +274,7 @@ animation: move 3s infinite;
 
 
 .arrow-wrapper {
-  display: flex;
   align-items: center;
-  position: relative;
-  top: 30%;
 }
 
 .block {

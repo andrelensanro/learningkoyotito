@@ -16,7 +16,6 @@ export class  HeaderSidebarAComponent{
   }
   CerrarSesion(){
     localStorage.removeItem('token');
-    location.reload()
   }
 
 }

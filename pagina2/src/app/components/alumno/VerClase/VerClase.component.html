@@ -25,8 +25,13 @@
 
     <div id="part1" class="form-group">
       
-      <h1 class="Instruccion1" style="position: absolute; top: 18%; right: 44%;">¿Qué color es el que ves?</h1>
-      <div class="panel panel-primary">
+      <h1 class="Instruccion1" style="position: absolute; top: 18%; right: 44%;">
+        <button (click)="TextToVoice('¿Cuál es el resultado?');"  class="btnmic" [disabled]="isDisabled" mat-fab color="primary">
+          <mat-icon>microphone</mat-icon>
+        </button>
+        ¿Cuál es el resultado?
+      </h1>
+            <div class="panel panel-primary">
         <img src="../../../../assets/Mt1.png" alt="Img1">
         <div class="btn-group btn-group-lg" role="group" aria-label="...">
           <label for='step2' id="continue-step2" class="continue">

@@ -25,7 +25,7 @@ export class PCObjetosComponent {
           var speechRecognizer = new webkitSpeechRecognition();
           speechRecognizer.continuous = true;
           speechRecognizer.interimResults = true;
-          speechRecognizer.lang = 'es-ES';
+          speechRecognizer.lang = 'es-MX';
           speechRecognizer.start();
           console.log("Speech recognition has started.");	
           var finalTranscripts = '';

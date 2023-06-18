@@ -172,8 +172,4 @@ export class InicioProfComponent implements OnInit{
     this.router.navigate([`/profesor/${this.idProfesor}/grupo/${idGrupo}`]);
   }
 
-  nav_verpreviaclase(idClase: number){
-    this.router.navigate([`/profesor/${this.idProfesor}/previa-mi-clase/${idClase}`]);
-  }
-
 }
