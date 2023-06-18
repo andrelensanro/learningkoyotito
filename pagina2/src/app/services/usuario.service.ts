@@ -6,6 +6,7 @@ import { Observable} from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Profesor } from 'app/models/profesor';
 import { Mensaje } from 'app/models/mensaje';
+import { Tutor } from 'app/models/tutor';
 
 
 @Injectable({
@@ -16,7 +17,8 @@ export class UsuarioService {
  
   private url = "http://localhost:8098/usuario"
   private urlProfesor = "http://localhost:8098/profesor"
-
+  private urlTutor = "http://localhost:8098/tutor"
+  
   constructor(private http:HttpClient) { }
 
   /* Registrar: solo retorna el id del usuario */
