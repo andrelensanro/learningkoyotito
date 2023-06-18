@@ -109,7 +109,7 @@ import { PCInglesComponent } from './components/Profesor/Clase/VerClase/PCIngles
 import { PCLogicaComponent } from './components/Profesor/Clase/VerClase/PCLogica.component';
 import { PCCienciasComponent } from './components/Profesor/Clase/VerClase/PCCiencias.component';
 import { PCMatematicasComponent } from './components/Profesor/Clase/VerClase/PCMatematicas.component';
-
+import { ManageDataService } from './services/manage-data.service';
 
 @NgModule({
   declarations: [
@@ -222,7 +222,7 @@ import { PCMatematicasComponent } from './components/Profesor/Clase/VerClase/PCM
     CrearClaseComponent
 
   ],
-  providers: [ JwtService, UsuarioService,
+  providers: [ JwtService, UsuarioService,ManageDataService,
     {
       provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true
     }
