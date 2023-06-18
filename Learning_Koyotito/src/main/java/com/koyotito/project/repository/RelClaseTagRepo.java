@@ -14,7 +14,7 @@ import com.koyotito.project.model.RelClaseTag;
 
 @Repository
 public interface RelClaseTagRepo extends JpaRepository<RelClaseTag, Long> {
-
+//	@Query(value="SELECT * FROM relclasetag where id")
 	List<RelClaseTag> findByClaseIdClase(Long id);
 }
 

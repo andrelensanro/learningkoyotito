@@ -87,10 +87,8 @@ public class ProfesorController {
 	public Profesor consultarProfesor_IdProfesor(@PathVariable("idProfesor") Long idProfesor) {
 		return profesorService.findById(idProfesor);
 	}
-//	@GetMapping("/{idUsuario}/consultar")
-//	public Profesor consultarProfesor_IdUsuario(@PathVariable("idUsuario") Long idUsuario) {
-//		return profesorService.findById(idUsuario);
-//	}
+	
+
 	
 	
 }

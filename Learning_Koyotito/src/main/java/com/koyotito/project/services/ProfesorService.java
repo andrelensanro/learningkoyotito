@@ -32,5 +32,5 @@ public class ProfesorService {
 		profesorRepo.deleteById(id);
 	}
 
-
+	
 }
