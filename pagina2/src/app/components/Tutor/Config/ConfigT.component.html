@@ -20,18 +20,34 @@
               <p>
                 <mat-form-field style="width: 35%;">
                   <mat-label>Nombre</mat-label>
+<<<<<<< Updated upstream
                     <input matInput placeholder="Ingrese un nombre" value="Mostrar el nombre">
+=======
+                    <input matInput placeholder="Ingrese un nombre" value="Mostrar el nombre" [(ngModel)]="usuario.nombre" (ngModelChange)="changeNombre($event)">
+                    {{usuario.nombre}}
+>>>>>>> Stashed changes
                   </mat-form-field>
                 </p>
                     
                 <div class="example-container">
                   <mat-form-field style="width: 35%;">
+<<<<<<< Updated upstream
                     <mat-label>Apelido 1</mat-label>
                     <input matInput name="ap1_usu"  placeholder="Ingrese un apellido" value="Peréz">
                   </mat-form-field>
                   <mat-form-field style="width: 35%; padding: 0px 40px">
                     <mat-label>Apellido 2</mat-label>
                     <input matInput name="ap2_usu"  placeholder="Ingrese un apellido" value="Gonzaléz">
+=======
+                    <mat-label>ApeLlido 1</mat-label>
+                    <input matInput name="ap1_usu"  placeholder="Ingrese un apellido" value="Peréz" [(ngModel)]="usuario.apellido1" (ngModelChange)="changeApellido1($event)">
+                    {{usuario.apellido1}}
+                  </mat-form-field>
+                  <mat-form-field style="width: 35%; padding: 0px 40px">
+                    <mat-label>Apellido 2</mat-label>
+                    <input matInput name="ap2_usu"  placeholder="Ingrese un apellido" value="Gonzaléz" [(ngModel)]="usuario.apellido2" (ngModelChange)="changeApellido2($event)">
+                    {{usuario.apellido2}}
+>>>>>>> Stashed changes
                   </mat-form-field>
                   </div>
 
@@ -41,9 +57,9 @@
         <section id="content2" style="width: 1200px;">
             <mat-form-field style="width: 400px;position: absolute; top: 10px;"><!--<mat-form-field class="example-full-width">-->
               <mat-label>Tutorados</mat-label>
-              <input  matInput placeholder="¿Un nuevo tutorado?, ingrese un Alias">
+              <input  matInput placeholder="¿Un nuevo tutorado?, ingrese un Alias" [(ngModel)]="pseudonimo" (ngModelChange)="changeTutorado($event)">
             </mat-form-field>
-          <button mat-flat-button style="background-color: rgb(63, 134, 30); position: absolute; top: 30px; left: 400px;">Añadir</button>      
+          <button mat-flat-button style="background-color: rgb(63, 134, 30); position: absolute; top: 30px; left: 400px;" (click)="agregarAlumno()">Añadir</button>      
              
           <div style="position: absolute; top: 80px;">
           <div class="tbl-header">
