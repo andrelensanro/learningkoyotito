@@ -1,6 +1,6 @@
 import { Tutor } from "./tutor";
 
-export interface Tutorado{
+export interface Tutorado{ 
     idTutorado: number;
     nivel: number;
     puntos:number;
