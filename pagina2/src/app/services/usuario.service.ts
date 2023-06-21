@@ -18,7 +18,7 @@ export class UsuarioService {
   private url = "http://localhost:8098/usuario"
   private urlProfesor = "http://localhost:8098/profesor"
   private urlTutor = "http://localhost:8098/tutor"
-º
+  
   constructor(private http:HttpClient) { }
 
   /* Registrar: solo retorna el id del usuario */

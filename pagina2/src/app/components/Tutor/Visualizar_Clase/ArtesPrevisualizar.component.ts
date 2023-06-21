@@ -1,12 +1,10 @@
 import { HttpClient } from "@angular/common/http";
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { MatDialog } from "@angular/material/dialog";
 import { ToastrService } from "ngx-toastr";
 import { DenunciasTComponent } from "../Denuncias/Denuncias.component";
 import { AprobarTComponent } from "../Aprobar/Aprobar.component";
-import { Router } from "@angular/router";
-import { JwtService } from "app/jwt.service";
 
 
 @Component({
@@ -23,27 +21,24 @@ import { JwtService } from "app/jwt.service";
     }
     disabled = true;
     items = ['Javascript', 'Typescript'];
-    
+
     DenunciaDialog(): void{
       const dialogRef = this.dialog.open(DenunciasTComponent, {
         //  data: {name: this.name},
-      });
+        });
     }
-    
-    
+
+
     AprobarDialog(): void{
-      const dialogRef = this.dialog.open(AprobarTComponent, {
+      //const dialogRef = this.dialog.open(AprobarTComponent, {
         //  data: {name: this.name},
-      });
+      //  });
+      this.toastr.info('Aprobado para todos los tutorados', 'Éxito',{timeOut: 7000});
     }
     MeGusta(){
       this.toastr.success('Guardado en Me gusta.', 'Éxito',{timeOut: 7000});
     }
     toppings = new FormControl('');
-    
+
     toppingList: string[] = ['Contenido inapropiado', 'Texto erróneo', 'Contenido ofensivo', 'Imagen errónea', 'No se distingue la imagen'];
-    
-
-
-
   }

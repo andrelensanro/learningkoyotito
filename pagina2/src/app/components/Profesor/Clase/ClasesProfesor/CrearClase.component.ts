@@ -247,6 +247,9 @@ export class CrearClaseComponent implements OnInit{
       this.tarjeta.instruccion = abc
     }
     
+    
+
+
     // resetArchivo(){
     //   this.tarjeta.idTarjeta = 0;
     //   this.tarjeta.instruccion = '';
@@ -311,21 +314,17 @@ export class CrearClaseComponent implements OnInit{
         })
       }
 
-      // this.archivo1.enlace      = this.imgURL;
-      // this.archivo1.profesor    = this.profesor;
-      // this.tarjeta1.instruccion = this.instruccion
-      // this.tarjeta1.clave       = this.clave
-      // this.tarjeta1.clase       = this.clase
-
+      this.archivo1.enlace      = this.imgURL;
+      this.archivo1.profesor    = this.profesor;
+      this.tarjeta1.instruccion = this.instruccion
+      this.tarjeta1.clave       = this.clave
+      this.tarjeta1.clase       = this.clase
       // console.log(this.archivo1)
       // console.log(this.tarjeta1)
-
       // this.archivos.push(this.archivo1);
       // this.tarjetas.push(this.tarjeta1);
-
       // console.log(this.archivo1)
       // console.log(this.tarjeta1)
-    
       // console.log("archivos " + this.archivos.length)
       // console.log(this.archivos)
       // console.log("tarjetas " + this.tarjetas.length)
@@ -334,12 +333,12 @@ export class CrearClaseComponent implements OnInit{
 
     }
 
-    guardarTarjeta(tarjeta, url, archivo, profesor){
+    guardarTarjeta(tarjeta, url, archivo, profesor, instruccion, clave){
       // guardarTarjeta(){
-      archivo.enlace      = this.imgURL;
-      archivo.profesor    = this.profesor;
-      tarjeta.instruccion = this.instruccion
-      tarjeta.clave       = this.clave
+      archivo.enlace      = url;
+      archivo.profesor    = profesor;
+      tarjeta.instruccion = instruccion
+      tarjeta.clave       = clave
       tarjeta.clase       = this.clase
       this.archivos.push(archivo);
       this.tarjetas.push(tarjeta);

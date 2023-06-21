@@ -1,12 +1,12 @@
 <main style="height: 80vh;">
-<app-HeaderSidebarP></app-HeaderSidebarP>
-<h1>Grupos</h1>
+    <app-HeaderSidebarP></app-HeaderSidebarP>
+    <h1>Grupos</h1>
 <div class="ag-format-container" style="overflow: scroll;height: 104%; width: 95%;">
     <div class="ag-courses_box">
+
       <div *ngFor="let grupo of grupos">
       <div class="ag-courses_item">
-        <a class="ag-courses-item_link"> 
-          <!-- [routerLink]="['/profesor/',idProfesor, '/grupo/', grupo.idGrupo ]" -->
+        <a [routerLink]="['/profesor/',idProfesor, '/grupo/', grupo.idGrupo ]" class="ag-courses-item_link">
           <div class="ag-courses-item_bg"></div>
   
           <div class="ag-courses-item_title">

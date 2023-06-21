@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Mensaje } from 'app/models/mensaje';
 import { Tutorado } from 'app/models/tutorado';
 import { Observable } from 'rxjs';
 
@@ -24,5 +25,7 @@ export class TutorService {
   findAllTutorados(idTutor:number):Observable<any>{
     return this.http.get<any>(`${this.urlTutor}/${idTutor}/consultar-tutorados`);
   }
-
+  // eliminarTutorado(tutorado:Tutorado, ):Observable<Mensaje>{
+  //   return this.http.post<Mensaje>(`${this.urlTutor}/${}/eliminar-tutorado`, tutorado);
+  // }
 }

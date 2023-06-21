@@ -1,0 +1,259 @@
+<app-HeaderSidebarP></app-HeaderSidebarP>
+<main style="height: 80vh">
+  <form (submit)="GuardarDialog()" ngNativeValidate>
+  <div class="form-group Derecha">
+    <div class="panel panel-primary">
+      <div class="example-container">
+        <mat-form-field>
+          <mat-label>Título de la clase</mat-label>
+          <input matInput name="tit_cls" required [(ngModel)]="clase.nombreClase">
+        </mat-form-field>&nbsp;&nbsp;
+        <mat-form-field>
+          <mat-label>Idioma</mat-label>
+          <mat-select  name="idioma" [(ngModel)]="clase.idioma">
+            <mat-option *ngFor="let idioma of idiomas" [value]="idioma.valor">
+              {{idioma.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Asignatura</mat-label>
+          <mat-select  name="asignatura" [(ngModel)]="clase.asignatura">
+            <mat-option *ngFor="let asign of asignaturas" [value]="asign.valor">
+              {{asign.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <h3>Ingresa algunas etiquetas (Máx. 3)</h3>
+        <tag-input [(ngModel)]="itemsAsObjects"
+              [maxItems]="3"
+              [displayBy]="'name'"
+              [onlyFromAutocomplete]="true"
+>
+              
+              <tag-input-dropdown   [showDropdownIfEmpty]="true"
+              [focusFirstElement]="true"
+              [displayBy]="'nombre'"
+              [identifyBy]="'idTag'"
+              [autocompleteItems]="autocompleteItemsAsObjects" >
+              
+              <ng-template let-item="item" >
+                    <!--click en el centro del boton para que se considere dentro de los tags seleccionados-->
+                    <button (click)="onSelect(item.nombre)">{{ item.nombre }}</button>
+                </ng-template>
+            </tag-input-dropdown>
+        </tag-input>
+      </div>
+      <br>
+      <!-- <div style="align-content: center;">
+        <mat-form-field style="width: 350px;">
+          <mat-label><mat-icon>portrait</mat-icon>Autor</mat-label>
+          <input matInput name="nomb_autor" disabled="true"  requiered [value]="nombrecompleto">
+        </mat-form-field>
+      </div>
+      <div style="align-content: center;">
+        <mat-form-field style="width: 350px;">
+        <mat-label><mat-icon>school</mat-icon>Escuela</mat-label>
+        <input matInput  name="esc_Prof" disabled="true"  [(ngModel)]="usuario.instPseudonimo" requiered>
+        </mat-form-field>
+      </div>
+      <div style="align-content: center;">
+        <mat-form-field style="width: 350px;">
+        <mat-label><mat-icon>mail</mat-icon>Correo de contacto</mat-label>
+        <input matInput name="mail_cont" disabled="true" [(ngModel)]="profesor.correoContacto" requiered>
+        </mat-form-field>
+      </div> -->
+    </div>
+    <button type="submit" mat-raised-button color="primary" style="z-index: 10;"  (click)="archivo5.enlace = imgURL;addTarjeta(tarjeta5);addArchivo(archivo5);CrearClase()" >Guardar</button>
+  </div>
+
+  <h1>Crear clase</h1>
+  <div class="form-container" >
+      <input id='step2' type='checkbox'>
+      <input id='step3' type='checkbox'>
+      <input id='step4' type='checkbox'>
+      <input id='step5' type='checkbox'>
+
+      <div id="part1" #part1 class="form-group Izquierdo">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Página 1</h3>
+          </div>
+          <div class="example-container">
+            <mat-form-field style="width: 35%; padding: 0px 75px">
+              <mat-label>Instrucción de la clase</mat-label>
+              <input matInput name="instruccion" [(ngModel)]="tarjeta1.instruccion">
+            </mat-form-field>
+            <mat-form-field style="width: 35%;">
+              <mat-label>Resultado de la clase</mat-label>
+              <input matInput name="clave" [(ngModel)]="tarjeta1.clave" >
+            </mat-form-field>
+            </div>
+          <span style="color:red;" ></span>
+          <!-- *ngIf="message1" {{message1}} -->
+          <input #file1 type="file" accept='image/*,video/*' (change)="preview(file1.files);upload(file1.files)" /><br/>
+          <!-- upload(file1.files) -->
+          <img [src]="imgURL" *ngIf="format==='image' && imgURL" height="200">
+          <video [src]="imgURL" *ngIf="format==='video' && imgURL" height="200" controls></video>
+
+          <div id="arrow_1" class="arrow-wrapper">
+          <div class="btn-group btn-group-lg" role="group" aria-label="...">
+            <label for='step2' id="continue-step2" class="continue">
+              <div class="arrow arrow--right"  role="button" (click)="archivo1.enlace = imgURL; preview(file2.files);reset(archivo1); addTarjeta(tarjeta1);addArchivo(archivo1)"><span></span></div>
+            </label>
+          </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div id="part2" class="form-group Izquierdo">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">Página 2</h3>
+        </div>
+        <div class="example-container">
+          <mat-form-field style="width: 35%; padding: 0px 75px">
+            <mat-label>Instrucción de la clase</mat-label>
+            <input matInput name="instruccion" [(ngModel)]="tarjeta2.instruccion" >
+          </mat-form-field>
+          <mat-form-field style="width: 35%;">
+            <mat-label>Resultado de la clase</mat-label>
+            <input matInput name="clave" [(ngModel)]="tarjeta2.clave" >
+          </mat-form-field>
+          </div>
+
+          <span style="color:red;" ></span>
+          <!-- *ngIf="message1" {{message1}} -->
+          <input #file2 type="file" accept='image/*,video/*' (change)="preview(file2.files);upload(file2.files);" /><br>
+          <img [src]="imgURL" *ngIf="format==='image' && imgURL" height="200">
+          <video [src]="imgURL" *ngIf="format==='video' && imgURL" height="200" controls></video>
+
+        <div id="arrow_1" class="arrow-wrapper">
+        <div class="btn-group btn-group-lg btn-group-justified" role="group" aria-label="...">
+          <label for='step2' id="back-step2" class="back">
+            <div class="arrow arrow--left" role="button" (click)="preview(file1.files);reset(archivo2)"><span></span></div>
+           </label>
+          <label for='step3' id="continue-step3" class="continue">
+            <div class="arrow arrow--right"  role="button" (click)="archivo2.enlace = imgURL;preview(file3.files);reset(archivo2);addTarjeta(tarjeta2);addArchivo(archivo2)"><span></span></div>
+          </label>
+        </div>
+        </div>
+      </div>
+      </div>
+
+      <div id="part3" class="form-group Izquierdo">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Página 3</h3>
+          </div>
+          <div class="example-container">
+            <mat-form-field style="width: 35%; padding: 0px 75px">
+              <mat-label>Instrucción de la clase</mat-label>
+              <input matInput name="instruccion" [(ngModel)]="tarjeta3.instruccion" >
+            </mat-form-field>
+            <mat-form-field style="width: 35%;">
+              <mat-label>Resultado de la clase</mat-label>
+              <input matInput name="clave" [(ngModel)]="tarjeta3.clave" >
+            </mat-form-field>
+            </div>
+            <span style="color:red;" ></span>
+            <!-- *ngIf="message1" {{message1}} -->          
+            <input #file3 type="file" accept='image/*,video/*' (change)="preview(file3.files);upload(file3.files)" /><br>
+          <img [src]="imgURL" *ngIf="format==='image' && imgURL" height="200">
+          <video [src]="imgURL" *ngIf="format==='video' && imgURL" height="200" controls></video>
+
+          <div id="arrow_1" class="arrow-wrapper">
+          <div class="btn-group btn-group-lg btn-group-justified" role="group" aria-label="...">
+
+            <label for='step3' id="back-step3" class="back">
+              <div class="arrow arrow--left" role="button" (click)="preview(file2.files);reset(archivo3)"><span></span></div>
+            </label>
+            <label for='step4' id="continue-step4" class="continue">
+              <div class="arrow arrow--right" role="button"  (click)="preview(file4.files);reset(archivo3);addTarjeta(tarjeta3);addArchivo(archivo3)"><span></span></div>
+            </label>
+          </div>
+        </div>
+        </div>
+      </div>
+
+
+      <div id="part4" class="form-group Izquierdo">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Página 4</h3>
+          </div>
+          <div class="example-container">
+            <mat-form-field style="width: 35%; padding: 0px 75px">
+              <mat-label>Instrucción de la clase</mat-label>
+              <input matInput name="instruccion" [(ngModel)]="tarjeta4.instruccion" >
+            </mat-form-field>
+            <mat-form-field style="width: 35%;">
+              <mat-label>Resultado de la clase</mat-label>
+              <input matInput name="clave" [(ngModel)]="tarjeta4.clave">
+            </mat-form-field>
+            </div>
+
+            <span style="color:red;" ></span>
+            <!-- *ngIf="message1" {{message1}} -->          
+            <input #file4 type="file" accept='image/*,video/*' (change)="preview(file4.files);upload(file4.files)" /><br>
+          <img [src]="imgURL" *ngIf="format==='image' && imgURL" height="200">
+          <video [src]="imgURL" *ngIf="format==='video' && imgURL" height="200" controls></video>
+
+          <div id="arrow_1" class="arrow-wrapper">
+          <div class="btn-group btn-group-lg btn-group-justified" role="group" aria-label="...">
+            <label for='step4' id="back-step4" class="back">
+              <div class="arrow arrow--left" (click)="preview(file3.files);reset(archivo4)" role="button"><span></span></div>
+            </label>
+            <label for='step5' id="continue-step5" class="continue">
+              <div class="arrow arrow--right" role="button" (click)="preview(file5.files);reset(archivo4);addTarjeta(tarjeta4);addArchivo(archivo4)"><span></span></div>
+            </label>
+          </div>
+        </div>
+      </div>
+      </div>
+
+
+      <div id="part5" class="form-group Izquierdo">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Página 5</h3>
+          </div>
+          <div class="example-container">
+            <mat-form-field style="width: 35%; padding: 0px 75px">
+              <mat-label>Instrucción de la clase</mat-label>
+              <input matInput name="instruccion" [(ngModel)]="tarjeta5.instruccion">
+            </mat-form-field>
+            <mat-form-field style="width: 35%;">
+              <mat-label>Resultado de la clase</mat-label>
+              <input matInput name="clave" [(ngModel)]="tarjeta5.clave" >
+            </mat-form-field>
+            </div>
+
+ <span style="color:red;" ></span>
+          <!-- *ngIf="message1" {{message1}} -->
+                    <input #file5 type="file" accept='image/*,video/*' (change)="preview(file5.files);upload(file5.files)" /><br>
+          <img [src]="imgURL" *ngIf="format==='image' && imgURL" height="200">
+          <video [src]="imgURL" *ngIf="format==='video' && imgURL" height="200" controls></video>
+
+          <div id="arrow_1" class="arrow-wrapper">
+          <div class="btn-group btn-group-lg btn-group-justified" role="group" aria-label="...">
+
+            <label for='step5' id="back-step5" class="back">
+              <div class="arrow arrow--left" role="button" (click)="preview(file4.files)"><span></span></div>
+            </label>
+          </div>
+        </div>
+        </div>
+      </div>
+
+  </div>
+</form>
+  <div class='air air1  Iborroso' style="z-index: 1;"></div>
+  <div class='air air2  Iborroso' style="z-index: 1;"></div>
+  <div class='air air3  Iborroso' style="z-index: 1;"></div>
+  <div class='air air4  Iborroso' style="z-index: 1;"></div>
+</main>

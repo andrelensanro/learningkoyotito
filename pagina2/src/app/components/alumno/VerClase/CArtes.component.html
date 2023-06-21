@@ -1,7 +1,7 @@
 <div class="hero">
 <app-HeaderSidebarA></app-HeaderSidebarA>
 
-    <h1 class="page-header" style="position: absolute; top: 10%;">Clase de matemáticas (Título)</h1>
+    <h1 class="page-header" style="position: absolute; top: 10%;">Clase de artes</h1>
 <div class="result" #result style="z-index: 10;"><- Presiona y habla.</div>
     <div class="example-button-container">
         <button (click)="startConverting(result);"  class="btnmic" [disabled]="isDisabled" mat-fab color="primary">
@@ -24,8 +24,14 @@
 
 
     <div id="part1" class="form-group">
-      
-      <h1 class="Instruccion1" style="position: absolute; top: 18%; right: 44%;">¿Qué color es el que ves?</h1>
+      <div style="position: absolute; top: 16%; right: 74%;">
+        <button (click)="TextToVoice('What color do you see?');"  class="" [disabled]="isDisabled" mat-fab color="accent">
+          <mat-icon>volume_up</mat-icon>
+        </button></div>
+      <h1 class="Instruccion1" style="position: absolute; top: 18%; left: 44%;">
+        
+        ¿Qué color ves?
+      </h1>
       <div class="panel panel-primary">
         <img src="../../../../assets/esp-artes/amarillo.jpg" alt="Img1">
         <div class="btn-group btn-group-lg" role="group" aria-label="...">

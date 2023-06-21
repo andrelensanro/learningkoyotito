@@ -6,13 +6,13 @@
 			  <h1>Configuración de la cuenta</h1>
         <br>
 
-        <input id="tab1" type="radio" name="tabs" checked>
+        <input class="etiquetas" id="tab1" type="radio" name="tabs" checked>
         <label for="tab1" >Datos personales</label>
           
-        <input id="tab2" type="radio" name="tabs">
+        <input class="etiquetas" id="tab2" type="radio" name="tabs">
         <label for="tab2">Correos de contacto</label>
           
-        <input id="tab3" type="radio" name="tabs">
+        <input class="etiquetas" id="tab3" type="radio" name="tabs">
         <label for="tab3">Cuenta</label>
             
         <section id="content1" scrollable style="overflow-y: auto; height: 350px;">
@@ -65,7 +65,7 @@
               <table cellpadding="0" cellspacing="0" border="0">
                 <tbody>
                   <tr>
-                  <td style="word-wrap: break-word;" ><input type="text" class="form-control" id="">{{profesor.correoContacto}}</td>
+                  <td style="word-wrap: break-word;" >correoDelProfesor@gmail.com</td>
                   <td style="text-align: center;" class="tdG"><button mat-icon-button (click)="eliminarCorreoContacto()"><mat-icon>delete_forever</mat-icon></button></td>
                   </tr>
               </tbody>
@@ -95,7 +95,7 @@
       </mat-form-field>
       </div>
 <button mat-flat-button color="primary" style="background-color: green;" type="submit" role="button" (click)="actualizarDatosCuenta()" >Guardar cambios</button>
-<button mat-flat-button color="primary" style="background-color: red;"  (click)="nav_inicio();eliminar_cuenta()"> Dar cuenta de baja</button>
+<button mat-flat-button color="primary" style="background-color: red;" routerLink="/Inicio">Dar cuenta de baja</button>
 </section>
         
       </div>

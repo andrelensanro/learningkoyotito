@@ -40,4 +40,5 @@ export class  HeaderSidebarPComponent implements OnInit{
   nav_config(){
     this.router.navigate([`/profesor/${this.idUsuario}/config`]);
   }
+
 }

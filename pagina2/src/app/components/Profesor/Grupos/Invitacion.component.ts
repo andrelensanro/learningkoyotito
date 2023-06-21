@@ -8,6 +8,7 @@ import { Tutorado } from 'app/models/tutorado';
 import { InvitacionService } from 'app/services/invitacion.service';
 import { ToastrService } from 'ngx-toastr';
 import { TutorService } from 'app/services/tutor.service';
+import { Tutor } from 'app/models/tutor';
 @Component({
   selector: 'app-Invitacion',
   templateUrl: './Invitacion.component.html',
@@ -18,11 +19,17 @@ export class InvitacionComponent{
   correoTutor : string = '';
   tutorado : string = '';
 
+  tutor: Tutor = {
+    idTutor: 0,
+    numTutorados: 0,
+  }
+
   tutoradoInfo: Tutorado ={
     idTutorado: 0,
     nivel: 1,
     puntos:10,
     pseudonimo: this.tutorado,
+    tutor: this.tutor
   }
 
 

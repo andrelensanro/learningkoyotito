@@ -4,8 +4,12 @@ import { JwtService } from 'app/jwt.service';
 import { Credentials } from 'app/models/credentials';
 import { Mensaje } from 'app/models/mensaje';
 import { Tutor } from 'app/models/tutor';
+import { Tutorado } from 'app/models/tutorado';
+import { TutorService } from 'app/services/tutor.service';
 import { UsuarioService } from 'app/services/usuario.service';
 import { ToastrService } from 'ngx-toastr';
+import { TutoradoListaService } from 'app/services/tutorado-lista.service';
+import { Route, Router } from '@angular/router';
 
 
 @Component({
@@ -13,7 +17,7 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './ConfigT.component.html',
   styleUrls: ['.././FondoT.component.scss', './ConfigT.component.scss']
 })
-export class ConfigTComponent implements OnInit{
+export class ConfigTComponent{
   menuType: String = "General";
   password1:string = '';
   password2:string = '';
@@ -22,7 +26,9 @@ export class ConfigTComponent implements OnInit{
     private usuarioService:UsuarioService,
     private jwtService:JwtService,
     private toastr: ToastrService,
-
+    private tutorService: TutorService,
+    public alumnoService: TutoradoListaService,
+    private router: Router,
   ) {}
 
   usuario:Usuario={
@@ -45,10 +51,23 @@ export class ConfigTComponent implements OnInit{
     numTutorados: 1,
   }
 
+  tutorado: Tutorado = {
+    idTutorado: 0,
+    nivel: 0,
+    puntos:0,
+    pseudonimo: '',
+    tutor: this.tutor,
+  }
+
+
   email      : string = '';
   idUsuario  : number = 0;
   idProfesor : number = 0;
   idTutor    : number = 0;
+  pseudonimo : string = ''
+  isEmptyTutorados : boolean = true
+  tutorados : Tutorado[] = []
+
   ngOnInit(): void {
     // traemos los identificadores del usuario en funcion del token 
     this.email       = this.jwtService.getEmail()!;
@@ -66,11 +85,26 @@ export class ConfigTComponent implements OnInit{
       this.tutor = tutor;
     })
 
-    
-    
-    
-    
+    this.tutorService.findAllTutorados(this.idTutor)
+    .subscribe((tutorados: Tutorado[]) => {
+      this.tutorados = tutorados
+      if(this.tutorados.length > 0)
+        this.isEmptyTutorados = false
+    })
   }
+
+  agregarAlumno(){
+
+    console.log("tutor ", this.tutor.idTutor)
+    console.log("tutorado ", this.pseudonimo)
+
+
+    this.tutorService.addTutorado(this.tutor.idTutor, this.pseudonimo )
+    .subscribe((tutorado: Tutorado) => this.tutorado = tutorado )
+  }
+
+
+
 
 changeNombre(abc: string){
   this.usuario.nombre = abc
@@ -84,6 +118,12 @@ changeApellido2(abc: string){
 changeCorreo(abc: string){
   this.usuario.correo = abc
 }
+changeTutorado(abc: string){
+  this.pseudonimo = abc
+}
+
+
+
 actualizarDatos(){
   // this.usuario.nombre="Mario";
   this.usuarioService
@@ -139,7 +179,12 @@ actualizarDatos(){
     location.reload()
   }
 
+  // eliminarTutorado(tutorado:Tutorado){
+  //   this.tutorService.eliminarTutorado(tutorado)
+  //   .subscribe()
+  // }
 
-
-
+  nav_alumnoInicio(tutorado: Tutorado){
+    this.router.navigate([`alumno/${tutorado.idTutorado}/inicio`])
+  }
 }

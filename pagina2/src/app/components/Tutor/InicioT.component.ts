@@ -22,8 +22,6 @@ export class InicioTComponent implements OnInit{
     private jwtService:JwtService,
     private router: Router
   ){}
-  
-
   email      : string = '';
   idUsuario  : number = 0;
   idProfesor : number = 0;
@@ -65,6 +63,17 @@ export class InicioTComponent implements OnInit{
   nav_busquedas(){
     this.router.navigate([`tutor/${this.idTutor}/inicio-busquedas`]);
   }
+
+
+  recomendados(){
+    this.router.navigate([`tutor/${this.idTutor}/ver-clases`]);
+  }
+
+  nav_prevClase(ruta:string){
+    this.router.navigate([`tutor/${this.idTutor}/previa-clase/${ruta}`]);
+  }
+
+
 
 
 } 

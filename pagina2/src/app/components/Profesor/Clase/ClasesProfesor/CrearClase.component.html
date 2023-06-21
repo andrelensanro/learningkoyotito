@@ -55,7 +55,7 @@
         </mat-form-field>
       </div>
     </div>
-    <button type="submit" mat-raised-button color="primary" style="z-index: 10;"  (click)="guardarTarjeta(tarjeta5, imgURL, archivo5, profesor);CrearClase()"  >Guardar</button>
+    <button type="submit" mat-raised-button color="primary" style="z-index: 10;"  (click)="guardarTarjeta(tarjeta5, imgURL, archivo5, profesor,  tarjeta5.instruccion, tarjeta5.clave );CrearClase()"  >Guardar</button>
   </div>
 
   <h1>Crear clase</h1>
@@ -73,22 +73,22 @@
           <div class="example-container">
             <mat-form-field style="width: 35%; padding: 0px 75px">
               <mat-label>Instrucción de la clase</mat-label>
-              <input matInput name="instruccion" [(ngModel)]="tarjeta1.instruccion" (ngModelChange)="changeInstruccion($event)">
+              <input matInput name="instruccion" [(ngModel)]="tarjeta1.instruccion">
             </mat-form-field>
             <mat-form-field style="width: 35%;">
               <mat-label>Resultado de la clase</mat-label>
-              <input matInput name="clave" [(ngModel)]="tarjeta1.clave" (ngModelChange)="changeClave($event)">
+              <input matInput name="clave" [(ngModel)]="tarjeta1.clave">
             </mat-form-field>
             </div>
           <span style="color:red;" *ngIf="message1">{{message1}}</span>
-          <input #file1 type="file" accept='image/*,video/*' (change)="preview(file1.files);upload(file1.files);guardarTarjeta(tarjeta1, imgURL, archivo1, profesor)" /><br/>
+          <input #file1 type="file" accept='image/*,video/*' (change)="preview(file1.files);upload(file1.files);" /><br/>
           <img [src]="imgURL" *ngIf="format==='image' && imgURL" height="200">
           <video [src]="imgURL" *ngIf="format==='video' && imgURL" height="200" controls></video>
 
           <div id="arrow_1" class="arrow-wrapper">
           <div class="btn-group btn-group-lg" role="group" aria-label="...">
             <label for='step2' id="continue-step2" class="continue">
-              <div class="arrow arrow--right" (click)="preview(file2.files);reset()" role="button"><span></span></div>
+              <div class="arrow arrow--right" (click)="preview(file2.files);reset()" role="button" (click)="guardarTarjeta(tarjeta1, imgURL, archivo1, profesor,  tarjeta1.instruccion, tarjeta1.clave )"><span></span></div>
             </label>
           </div>
           </div>
@@ -104,16 +104,16 @@
         <div class="example-container">
           <mat-form-field style="width: 35%; padding: 0px 75px">
             <mat-label>Instrucción de la clase</mat-label>
-            <input matInput name="instruccion" [(ngModel)]="tarjeta2.instruccion" (ngModelChange)="changeInstruccion($event)">
+            <input matInput name="instruccion" [(ngModel)]="tarjeta2.instruccion" >
           </mat-form-field>
           <mat-form-field style="width: 35%;">
             <mat-label>Resultado de la clase</mat-label>
-            <input matInput name="clave" [(ngModel)]="tarjeta2.clave" (ngModelChange)="changeClave($event)">
+            <input matInput name="clave" [(ngModel)]="tarjeta2.clave" >
           </mat-form-field>
           </div>
 
           <span style="color:red;" *ngIf="message1">{{message1}}</span>
-          <input #file2 type="file" accept='image/*,video/*' (change)="preview(file2.files);upload(file2.files);guardarTarjeta(tarjeta2, imgURL, archivo2, profesor)" /><br>
+          <input #file2 type="file" accept='image/*,video/*' (change)="preview(file2.files);upload(file2.files);" /><br>
           <img [src]="imgURL" *ngIf="format==='image' && imgURL" height="200">
           <video [src]="imgURL" *ngIf="format==='video' && imgURL" height="200" controls></video>
 
@@ -123,7 +123,7 @@
             <div class="arrow arrow--left" (click)="preview(file1.files);reset()" role="button" (click)="editarTarjeta(tarjeta1, imgURL, archivo1, profesor)"><span></span></div>
            </label>
           <label for='step3' id="continue-step3" class="continue">
-            <div class="arrow arrow--right" (click)="preview(file3.files);reset()" role="button"><span></span></div>
+            <div class="arrow arrow--right" (click)="preview(file3.files);reset()" role="button" (click)="guardarTarjeta(tarjeta2, imgURL, archivo2, profesor,  tarjeta2.instruccion, tarjeta2.clave )"><span></span></div>
           </label>
         </div>
         </div>
@@ -138,11 +138,11 @@
           <div class="example-container">
             <mat-form-field style="width: 35%; padding: 0px 75px">
               <mat-label>Instrucción de la clase</mat-label>
-              <input matInput name="instruccion" [(ngModel)]="tarjeta3.instruccion" (ngModelChange)="changeInstruccion($event)">
+              <input matInput name="instruccion" [(ngModel)]="tarjeta3.instruccion">
             </mat-form-field>
             <mat-form-field style="width: 35%;">
               <mat-label>Resultado de la clase</mat-label>
-              <input matInput name="clave" [(ngModel)]="tarjeta3.clave" (ngModelChange)="changeClave($event)">
+              <input matInput name="clave" [(ngModel)]="tarjeta3.clave">
             </mat-form-field>
             </div>  
           <span style="color:red;" *ngIf="message1">{{message1}}</span>
@@ -157,7 +157,7 @@
               <div class="arrow arrow--left" (click)="preview(file2.files);reset()" role="button" (click)="editarTarjeta(tarjeta2, imgURL, archivo2, profesor)"><span></span></div>
             </label>
             <label for='step4' id="continue-step4" class="continue">
-              <div class="arrow arrow--right" (click)="preview(file4.files);reset()" role="button" (click)="guardarTarjeta(tarjeta3, imgURL, archivo5, profesor)"><span></span></div>
+              <div class="arrow arrow--right" (click)="preview(file4.files);reset()" role="button" (click)="guardarTarjeta(tarjeta3, imgURL, archivo5, profesor,  tarjeta3.instruccion, tarjeta3.clave )"><span></span></div>
             </label>
           </div>
         </div>
@@ -173,11 +173,11 @@
           <div class="example-container">
             <mat-form-field style="width: 35%; padding: 0px 75px">
               <mat-label>Instrucción de la clase</mat-label>
-              <input matInput name="instruccion" [(ngModel)]="tarjeta4.instruccion" (ngModelChange)="changeInstruccion($event)">
+              <input matInput name="instruccion" [(ngModel)]="tarjeta4.instruccion" >
             </mat-form-field>
             <mat-form-field style="width: 35%;">
               <mat-label>Resultado de la clase</mat-label>
-              <input matInput name="clave" [(ngModel)]="tarjeta4.clave" (ngModelChange)="changeClave($event)">
+              <input matInput name="clave" [(ngModel)]="tarjeta4.clave">
             </mat-form-field>
             </div>
           
@@ -192,7 +192,7 @@
               <div class="arrow arrow--left" (click)="preview(file3.files);reset()" role="button" (click)="editarTarjeta(tarjeta3, imgURL, archivo3, profesor)"><span></span></div>
             </label>
             <label for='step5' id="continue-step5" class="continue">
-              <div class="arrow arrow--right" (click)="preview(file5.files);reset()" role="button" (click)="guardarTarjeta(tarjeta4, imgURL, archivo4, profesor)"><span></span></div>
+              <div class="arrow arrow--right" (click)="preview(file5.files);reset()" role="button" (click)="guardarTarjeta(tarjeta4, imgURL, archivo4, profesor, tarjeta4.instruccion, tarjeta4.clave )"><span></span></div>
             </label>
           </div>
         </div>
@@ -208,11 +208,11 @@
           <div class="example-container">
             <mat-form-field style="width: 35%; padding: 0px 75px">
               <mat-label>Instrucción de la clase</mat-label>
-              <input matInput name="instruccion" [(ngModel)]="tarjeta5.instruccion" (ngModelChange)="changeInstruccion($event)">
+              <input matInput name="instruccion" [(ngModel)]="tarjeta5.instruccion" >
             </mat-form-field>
             <mat-form-field style="width: 35%;">
               <mat-label>Resultado de la clase</mat-label>
-              <input matInput name="clave" [(ngModel)]="tarjeta5.clave" (ngModelChange)="changeClave($event)">
+              <input matInput name="clave" [(ngModel)]="tarjeta5.clave" >
             </mat-form-field>
             </div>
           

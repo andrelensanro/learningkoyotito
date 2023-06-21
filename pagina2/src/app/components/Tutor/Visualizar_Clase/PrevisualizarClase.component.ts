@@ -35,6 +35,8 @@ import { ProfeService } from 'app/services/profe.service';
     usuario: Usuario;
     parametro: string;
     idUsuario: number;
+    existCorreo: boolean = false
+
     tags: string[] = ['español', 'básico', 'vocabulario']
 
     constructor(
@@ -108,6 +110,7 @@ import { ProfeService } from 'app/services/profe.service';
           this.clase = clase;
         
           var idProfesor = this.clase.profesor.idProfesor
+          this.existCorreo = ( this.clase.profesor.correoContacto != null)
           
           this.usuarioService.getUsuarioByIdProfesor(idProfesor)
           .subscribe( (usuario: Usuario) => this.usuario = usuario )
@@ -132,6 +135,10 @@ import { ProfeService } from 'app/services/profe.service';
         });
     }
     AprobarDialog(): void{
+      //const dialogRef = this.dialog.open(AprobarTComponent, {
+        //  data: {name: this.name},
+      //  });
+      //this.toastr.info('Aprobado para todos los tutorados', 'Éxito',{timeOut: 7000});
       const dialogRef = this.dialog.open(AprobarTComponent, {
         data: { 
           idClase: this.idClase,
