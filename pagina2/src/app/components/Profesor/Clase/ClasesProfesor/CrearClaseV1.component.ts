@@ -1,9 +1,6 @@
 import { Usuario } from 'app/models/usuario';
 import { HttpClient, HttpEventType, HttpResponse } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
-import { of,Observable } from "rxjs";
-import { CrearClaseService } from "./CrearClase.service";
-import { FormControl } from "@angular/forms";
 import { GuardarClaseComponent } from "./GuardarClase.component";
 import { MatDialog } from "@angular/material/dialog";
 import { TagService } from "app/services/tag.service";
@@ -18,45 +15,39 @@ import { Archivo } from 'app/models/archivo';
 import { MediaService } from 'app/media/media.service';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-
+import { ManageDataService } from 'app/services/manage-data.service';
+import { ClaseDataService } from 'app/services/clase-data.service';
 
 interface Leng {
   valor: string;
   viewValue: string;
 }
-var ImgHidden = false;
 @Component({
     selector: 'app-CrearClase',
-    templateUrl: "./CrearClase.component.html",
+    templateUrl: "./CrearClaseV1.component.html",
     styleUrls: ['./CrearClase.component.scss','../../FondoP.component.scss']
   })
   
-export class CrearClaseComponent implements OnInit{
+export class CrearClaseV1Component implements OnInit{
 // ----------------------------------------------------------------------
   idiomas: Leng[] = [
     {valor: 'esp-1', viewValue: 'Español'},
     {valor: 'eng-2', viewValue: 'Inglés'},
   ];
+  asignaturas: Leng[] = [
+    {valor: '1', viewValue: 'Ciencias'},
+    {valor: 'eng-2', viewValue: 'Inglés'},
+  ];
   
+  seleccionados : string [] = []
+  indice: number = 0;
   selectedFood = this.idiomas[1].valor;
   selectedFiles?: FileList;
   selectedFileNames: string[] = [];
-  
-  progressInfos: any[] = [];
-  message: string[] = [];
-  
-  previews: string[] = [];
-  imageInfos?: Observable<any>;
-  
-  grupos = new FormControl('');
-  
-  ListaGrupo: string[] = ['Grupo 1', 'Grupo 2', 'Grupo 3', 'Grupo 4', 'Grupo 5', 'Grupo 6'];
-  
   itemsAsObjects = [{id: 0, name: 'Clase', readonly: true}];
   
   public imagePath;   /* viene todo el archivo */
-  public message1!: string;
-  imgURL: any; /*data de la imagen */
+  imgURL: any;        /*data de la imagen */
   format;
   
   autocompleteItemsAsObjects:any[] = [];
@@ -65,12 +56,12 @@ export class CrearClaseComponent implements OnInit{
     preview(files) {
       const file = files && files[0];
       if (files.length === 0)
-        return;
+      return;
       
       var reader = new FileReader();
       this.imagePath = file;
       reader.readAsDataURL(file); 
-
+      
       if(file.type.indexOf('image')> -1){
         this.format = 'image';
       } else if(file.type.indexOf('video')> -1){
@@ -78,7 +69,6 @@ export class CrearClaseComponent implements OnInit{
       }
       reader.onload = (event) => { 
         this.imgURL = (<FileReader>event.target).result;
-        console.log(this.tarjeta1.instruccion)
         console.log(this.imagePath);
       }
     }
@@ -89,8 +79,34 @@ export class CrearClaseComponent implements OnInit{
     institucion:'',
     numFaltasTotales:0
   };
-
-  archivos: Archivo[] = [];
+  clase: Clase = {
+    idClase:0,
+    nombreClase:'',
+    fecha:'',
+    estado:'', // finalizado o en proceso
+    numMeGusta:0,
+    numTarjetas:0,
+    numVisitas:0,
+    numDenuncias: 0,
+    isPapelera: false,
+    idioma: '',
+    profesor:this.profesor,
+    asignatura: ''
+  };
+  usuario: Usuario = {
+    idUsuario: 0,
+    nombre: '',
+    apellido1: '',
+    apellido2: '',
+    correo: '',
+    password: '',
+    num_denuncias: 0,
+    idTipoUsuario: 2,
+    instPseudonimo: '',
+    admin_id:0,
+    prof_id:0,
+    tutor_id:0,
+  };
   archivo1: Archivo ={
     idArchivo: 0,
     enlace: '',
@@ -131,32 +147,6 @@ export class CrearClaseComponent implements OnInit{
     tipo: '',
     profesor: this.profesor,
   }
-
-  clase: Clase = {
-    idClase:0,
-    nombreClase:'',
-    fecha:'',
-    estado:'', // finalizado o en proceso
-    numMeGusta:0,
-    numTarjetas:0,
-    numVisitas:0,
-    numDenuncias: 0,
-    isPapelera: false,
-    idioma: '',
-    profesor:this.profesor,
-    asignatura: ''
-  };
-
-  tarjetas: Tarjeta[] = [];
-
-  tarjeta:Tarjeta = {
-    idTarjeta: 0,
-    instruccion: '',
-    clave: '',
-    tipoLetra: 'Arial',
-    tamanio: 12,
-    clase: this.clase
-  }
   tarjeta1:Tarjeta = {
     idTarjeta: 0,
     instruccion: '',
@@ -172,7 +162,7 @@ export class CrearClaseComponent implements OnInit{
     tipoLetra: 'Arial',
     tamanio: 12,
     clase: this.clase
-  }
+  } 
   tarjeta3:Tarjeta = {
     idTarjeta: 0,
     instruccion: '',
@@ -198,20 +188,6 @@ export class CrearClaseComponent implements OnInit{
     clase: this.clase
   }
   
-  usuario: Usuario = {
-    idUsuario: 0,
-    nombre: '',
-    apellido1: '',
-    apellido2: '',
-    correo: '',
-    password: '',
-    num_denuncias: 0,
-    idTipoUsuario: 2,
-    instPseudonimo: '',
-    admin_id:0,
-    prof_id:0,
-    tutor_id:0,
-  };
   
   email:string='';
   idUsuario:number=0;
@@ -220,8 +196,11 @@ export class CrearClaseComponent implements OnInit{
   instruccion:string='';
   clave:string='';
   nombrecompleto : string = ''
-    
+  
 
+  archivos: Archivo[] = []
+  tarjetas: Tarjeta[] = []
+  
   constructor(
     public dialog: MatDialog,
     private tagService: TagService,
@@ -232,42 +211,16 @@ export class CrearClaseComponent implements OnInit{
     private mediaService: MediaService, 
     private route: ActivatedRoute,
     private toastr: ToastrService,
+    public data: ManageDataService,
+    private claseData: ClaseDataService
     
-    ){}
+    ){} // end constructor
       
-    reset(){
+    reset(archivo: Archivo){
+      archivo.enlace = this.imgURL;
       this.imgURL="";
     }
-      
-    changeInstruccion(abc: string){
-      this.tarjeta.instruccion = abc
-    }
 
-    changeClave(abc: string){
-      this.tarjeta.instruccion = abc
-    }
-    
-    
-
-
-    // resetArchivo(){
-    //   this.tarjeta.idTarjeta = 0;
-    //   this.tarjeta.instruccion = '';
-    //   this.tarjeta.clave = '';
-    //   this.tarjeta.tipoLetra = 'Arial';
-    //   this.tarjeta.tamanio = 12;
-    //   this.tarjeta.clase = this.clase;
-    // }
-    // resetTarjeta(){
-    //   this.tarjeta = {
-    //   idTarjeta: 0,
-    //   instruccion: '',
-    //   clave: '',
-    //   tipoLetra: 'Arial',
-    //   tamanio: 12,
-    //   clase: this.clase
-    //   }
-    //}
 
     ngOnInit(): void {
 
@@ -276,11 +229,6 @@ export class CrearClaseComponent implements OnInit{
        this.idProfesor = parseInt(this.jwtService.getIdProfesor()!);
        this.idTutor =    parseInt(this.jwtService.getIdTutor()!);
        
-       console.log(this.email)
-       console.log(this.idUsuario)
-       console.log(this.idProfesor)
-       console.log(this.idTutor)
-
        this.usuarioService.getUsuarioByEmail(this.email!)
        .subscribe((usr:Usuario) => {
          this.usuario = usr
@@ -299,6 +247,7 @@ export class CrearClaseComponent implements OnInit{
         .subscribe((data:any )=> {
           this.autocompleteItemsAsObjects = data;
         })
+
     
     }//end OnInit
 
@@ -313,57 +262,58 @@ export class CrearClaseComponent implements OnInit{
           this.imgURL = response.url;
         })
       }
+    } // end upload
 
-      this.archivo1.enlace      = this.imgURL;
-      this.archivo1.profesor    = this.profesor;
-      this.tarjeta1.instruccion = this.instruccion
-      this.tarjeta1.clave       = this.clave
-      this.tarjeta1.clase       = this.clase
-      // console.log(this.archivo1)
-      // console.log(this.tarjeta1)
-      // this.archivos.push(this.archivo1);
-      // this.tarjetas.push(this.tarjeta1);
-      // console.log(this.archivo1)
-      // console.log(this.tarjeta1)
-      // console.log("archivos " + this.archivos.length)
-      // console.log(this.archivos)
-      // console.log("tarjetas " + this.tarjetas.length)
-      // console.log(this.tarjetas)
-
-
+    get allTarjetas():Tarjeta[]{
+      return this.claseData.tarjetas;
     }
 
-    guardarTarjeta(tarjeta, url, archivo, profesor, instruccion, clave){
-      // guardarTarjeta(){
-      archivo.enlace      = url;
-      archivo.profesor    = profesor;
-      tarjeta.instruccion = instruccion
-      tarjeta.clave       = clave
-      tarjeta.clase       = this.clase
-      this.archivos.push(archivo);
-      this.tarjetas.push(tarjeta);
-      console.log("archivos " + this.archivos.length)
-      console.log(this.archivos)
-      console.log("tarjetas " + this.tarjetas.length)
-      console.log(this.tarjetas)
-      
+    get allArchivos():Archivo[]{
+      return this.claseData.archivos;
     }
 
-    editarTarjeta(tarjeta, url, archivo, profesor){
-      this.toastr.success( "Editando", 'Éxito',{timeOut: 7000});
-      // this.guardarTarjeta(tarjeta, url, archivo, profesor);
+    addTarjeta(_newtarjeta: Tarjeta):void{
+      _newtarjeta.clase = this.clase
+      this.claseData.addTarjeta(_newtarjeta)
     }
 
+    addArchivo(_newarchivo: Archivo): void{
+      _newarchivo.profesor = this.profesor
+      this.claseData.addArchivo(_newarchivo)
+    }
+   
     GuardarDialog(): void{
       const dialogRef = this.dialog.open(GuardarClaseComponent, { disableClose: true
-        //  data: {name: this.name},
+          // data: {name: this.name},
         });
     }
+    public onSelect(item) {
+      this.seleccionados.push(item) 
+    }
+
+
 
     CrearClase(){
-      /*tomas las listas y creas cada objeto*/
-      /*creas la clase*/
+      
+      this.seleccionados.forEach(element => {
+        console.log("tag " + element)
+      });
+
+
+
+      console.log("archivos ");
+
+      this.allArchivos.forEach(element => {
+        console.log(element)
+      });
+      
+      console.log("tarjetas ");
+
+      this.allTarjetas.forEach(element => {
+        console.log(element)
+      });
+      
       this.toastr.success( "Clase creada con éxito", 'Éxito',{timeOut: 7000});
-      console.log()
+     
     }
 }

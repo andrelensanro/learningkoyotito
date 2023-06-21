@@ -12,4 +12,10 @@ export class CrearClaseService {
   uploadFiles(formData: FormData): Observable<any>{
     return this.http.post('http://localhost:8080/media/upload', formData);
   }
+  
+
+
+
+
+
 }

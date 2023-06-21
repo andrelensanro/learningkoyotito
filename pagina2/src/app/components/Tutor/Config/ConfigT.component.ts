@@ -1,6 +1,3 @@
-<<<<<<< Updated upstream
-import { Component } from '@angular/core';
-=======
 import { Usuario } from './../../../models/usuario';
 import { Component, OnInit } from '@angular/core';
 import { JwtService } from 'app/jwt.service';
@@ -11,7 +8,8 @@ import { Tutorado } from 'app/models/tutorado';
 import { TutorService } from 'app/services/tutor.service';
 import { UsuarioService } from 'app/services/usuario.service';
 import { ToastrService } from 'ngx-toastr';
->>>>>>> Stashed changes
+import { TutoradoListaService } from 'app/services/tutorado-lista.service';
+import { Route, Router } from '@angular/router';
 
 
 @Component({
@@ -21,9 +19,6 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ConfigTComponent{
   menuType: String = "General";
-<<<<<<< Updated upstream
-  constructor() {}
-=======
   password1:string = '';
   password2:string = '';
   
@@ -32,6 +27,8 @@ export class ConfigTComponent{
     private jwtService:JwtService,
     private toastr: ToastrService,
     private tutorService: TutorService,
+    public alumnoService: TutoradoListaService,
+    private router: Router,
   ) {}
 
   usuario:Usuario={
@@ -68,6 +65,9 @@ export class ConfigTComponent{
   idProfesor : number = 0;
   idTutor    : number = 0;
   pseudonimo : string = ''
+  isEmptyTutorados : boolean = true
+  tutorados : Tutorado[] = []
+
   ngOnInit(): void {
     // traemos los identificadores del usuario en funcion del token 
     this.email       = this.jwtService.getEmail()!;
@@ -83,6 +83,13 @@ export class ConfigTComponent{
     this.usuarioService.getTutorByIdTutor(this.idTutor)
     .subscribe( (tutor:Tutor) => {
       this.tutor = tutor;
+    })
+
+    this.tutorService.findAllTutorados(this.idTutor)
+    .subscribe((tutorados: Tutorado[]) => {
+      this.tutorados = tutorados
+      if(this.tutorados.length > 0)
+        this.isEmptyTutorados = false
     })
   }
 
@@ -114,10 +121,6 @@ changeCorreo(abc: string){
 changeTutorado(abc: string){
   this.pseudonimo = abc
 }
-
-
-
-
 
 
 
@@ -176,8 +179,12 @@ actualizarDatos(){
     location.reload()
   }
 
+  // eliminarTutorado(tutorado:Tutorado){
+  //   this.tutorService.eliminarTutorado(tutorado)
+  //   .subscribe()
+  // }
 
-
-
->>>>>>> Stashed changes
+  nav_alumnoInicio(tutorado: Tutorado){
+    this.router.navigate([`alumno/${tutorado.idTutorado}/inicio`])
+  }
 }

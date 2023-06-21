@@ -8,7 +8,7 @@ Elige un tema de tu interés
   <div class="ag-format-container" style="overflow: scroll;height: 104%; width: 95%;">
     <div class="ag-courses_box">
   <div class="ag-courses_item">
-    <a routerLink="/Tutor/Clases"  value="matematicas" (click)="SelClase('matematicas')" class="ag-courses-item_link">
+    <a value="matematicas" (click)="SelClase('matematicas');nav_prevClase('mates')" class="ag-courses-item_link">
       <div class="matematicas"><div class="ag-courses-item_bg"></div></div>
       <div class="ag-courses-item_title" style="text-align: center;height: 150px;">
         <br><br><br> Matemáticas
@@ -17,7 +17,7 @@ Elige un tema de tu interés
   </div>
 
   <div class="ag-courses_item">
-    <a routerLink="/Tutor/Clases"  value="espanol" (click)="SelClase('espanol')" class="ag-courses-item_link">
+    <a value="espanol" (click)="SelClase('espanol');nav_prevClase('objetos')" class="ag-courses-item_link">
       <div class="ag-courses-item_title" style="text-align: center;height: 150px;">
         <br><br><br> Español
       </div>
@@ -25,7 +25,7 @@ Elige un tema de tu interés
   </div>
 
   <div class="ag-courses_item">
-    <a routerLink="/Tutor/Clases"  value="ingles" (click)="SelClase('ingles')" class="ag-courses-item_link">
+    <a  value="ingles" (click)="SelClase('ingles');nav_prevClase('ingles')" class="ag-courses-item_link">
       <div class="ingles"><div class="ag-courses-item_bg"></div></div>
       <div class="ag-courses-item_title" style="text-align: center;height: 150px;">
         <br><br><br> Inglés
@@ -34,7 +34,7 @@ Elige un tema de tu interés
   </div>
 
   <div class="ag-courses_item">
-    <a routerLink="/Tutor/Clases"  value="artes" (click)="SelClase('artes')" class="ag-courses-item_link">
+    <a value="artes" (click)="SelClase('artes');nav_prevClase('artes')" class="ag-courses-item_link">
       <div class="artes"><div class="ag-courses-item_bg"></div></div>
       <div class="ag-courses-item_title" style="text-align: center;height: 150px;">
         <br><br><br> Artes
@@ -43,23 +43,32 @@ Elige un tema de tu interés
   </div>
 
   <div class="ag-courses_item">
-    <a routerLink="/Tutor/Clases"  value="logica" (click)="SelClase('logica')" class="ag-courses-item_link">
+    <a value="logica" (click)="SelClase('logica');nav_prevClase('logica')" class="ag-courses-item_link">
       <div class="logica"><div class="ag-courses-item_bg"></div></div>
       <div class="ag-courses-item_title" style="text-align: center;height: 150px;">
         <br><br><br> Lógica y razonamiento
       </div>
     </a>
   </div>
-
   <div class="ag-courses_item">
-    <a routerLink="/Tutor/Clases"  value="ciencias" (click)="SelClase('ciencias')" class="ag-courses-item_link">
+    <a value="ciencias" (click)="SelClase('ciencias');nav_prevClase('ciencias')" class="ag-courses-item_link">
       <div class="ciencias"><div class="ag-courses-item_bg"></div></div>
       <div class="ag-courses-item_title" style="text-align: center;height: 150px;">
         <br><br><br> Conocimientos naturales
       </div>
     </a>
   </div>
-
+  
+  <!-- 
+    [routerLink]="['tutor/',idTutor,'previa-clase/mates']"  
+[routerLink]="['tutor',idTutor,'previa-clase/objetos']"  
+[routerLink]="['tutor',idTutor,'previa-clase/ingles']" 
+    [routerLink]="['tutor',idTutor,'previa-clase/artes']"  
+  [routerLink]="['tutor',idTutor,'previa-clase/logica']" 
+  [routerLink]="['tutor',idTutor,'previa-clase/ciencias']"
+  
+  
+  -->
 
 </div>
 

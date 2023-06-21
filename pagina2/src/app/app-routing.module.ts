@@ -1,3 +1,4 @@
+import { CrearClaseV1Component } from './components/Profesor/Clase/ClasesProfesor/CrearClaseV1.component';
 import { CArtesComponent } from './components/alumno/VerClase/CArtes.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -122,6 +123,9 @@ const routes: Routes = [
   {path: 'profesor/:idProfesor/ver-clase/ciencias', component: PCCienciasComponent, canActivate: [AuthGuard]},
   {path: 'profesor/:idProfesor/ver-clase/logica', component: PCLogicaComponent, canActivate: [AuthGuard]},
   {path: 'profesor/:idProfesor/ver-clase/mates', component: PCMatematicasComponent, canActivate: [AuthGuard]},
+
+
+  {path: 'profesor/:idProfesor/crear-claseV1', component: CrearClaseV1Component},
 
 
   // {path: '**', redirectTo: 'profesor/inicio'},

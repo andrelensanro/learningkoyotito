@@ -19,7 +19,7 @@
             <div style="align-content: center;">
                 <mat-icon>school</mat-icon>&nbsp;&nbsp;{{clase.profesor.institucion}}
             </div>
-            <div style="align-content: center;">
+            <div style="align-content: center;" *ngIf="existCorreo">
                 <mat-icon>mail</mat-icon>&nbsp;&nbsp;{{clase.profesor.correoContacto}}
             </div>
             <!-- <button class="btnOP" style="--clr:#39FF14;" (click)="this.MeGusta()" ><span><mat-icon>thumb_up_alt</mat-icon>  Me gusta</span><i></i></button><br> -->

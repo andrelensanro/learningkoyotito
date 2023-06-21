@@ -25,6 +25,7 @@ import { ReestContraComponent } from './components/sesion/ReestContra.component'
 import { navBar1Component } from './components/Profesor/navBar1.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { CrearClaseComponent } from './components/Profesor/Clase/ClasesProfesor/CrearClase.component';
+import { CrearClaseV1Component } from './components/Profesor/Clase/ClasesProfesor/CrearClaseV1.component';
 import { RouterModule } from '@angular/router';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule } from '@angular/material/form-field';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
@@ -111,7 +112,11 @@ import { PCCienciasComponent } from './components/Profesor/Clase/VerClase/PCCien
 import { PCMatematicasComponent } from './components/Profesor/Clase/VerClase/PCMatematicas.component';
 import { TutoradosComponent } from './components/Tutor/Tutorados/Tutorados.component';
 
-import { ManageDataService } from './services/manage-data.service';
+import { TutoradoListaService } from './services/tutorado-lista.service';
+
+import { ManageDataService } from './services/manage-data.service'; // usado en la creacion de la clase
+
+import { ClaseDataService } from './services/clase-data.service';
 
 @NgModule({
   declarations: [
@@ -190,7 +195,8 @@ import { ManageDataService } from './services/manage-data.service';
     LogicaPrevisualizarClaseComponent   ,
     MatesPrevisualizarClaseComponent    ,
     ObjetosPrevisualizarClaseComponent  ,
-    TutoradosComponent
+    TutoradosComponent,
+    CrearClaseV1Component
       ],
   imports: [
     BrowserModule,
@@ -225,7 +231,7 @@ import { ManageDataService } from './services/manage-data.service';
     CrearClaseComponent
 
   ],
-  providers: [ JwtService, UsuarioService,ManageDataService,
+  providers: [ JwtService, UsuarioService,ManageDataService,TutoradoListaService,
     {
       provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true
     }

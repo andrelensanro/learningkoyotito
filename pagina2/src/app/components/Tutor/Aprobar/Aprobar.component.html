@@ -1,6 +1,8 @@
 <mat-card>
-    <mat-card-content><h1 mat-dialog-title>Aprobado para todos sus tuoradoss.</h1>
-        <mat-form-field appearance="fill">
+    <mat-card-content>
+      <h1 mat-dialog-title>Recuerda que la aprobacion de está clase permite que el contenido pueda ser accesible a tu hijo y otros aprendices.</h1>
+      <h1 mat-dialog-title>Gracias.</h1>
+        <!-- <mat-form-field appearance="fill">
           <mat-label>Alumnos / Clase</mat-label>
     <mat-select [formControl]="alumnos" multiple  ng-model="SelectDenuncia">
       <mat-select-trigger>
@@ -11,7 +13,8 @@
       </mat-select-trigger>
       <mat-option *ngFor="let alumno of ListaAlumnos" [value]="alumno">{{alumno}}</mat-option>
     </mat-select>
-    </mat-form-field>
-    <button  ng-disabled="!SelectDenuncia || SelectDenuncia.length == 0" mat-stroked-button color="warn">Enviar</button>
+    </mat-form-field> -->
+    <!-- <button  ng-disabled="!SelectDenuncia || SelectDenuncia.length == 0" mat-stroked-button color="warn" (click)="">Enviar</button> -->
+    <button   color="warn" (click)="aprobarClase()">Enviar</button>
     </mat-card-content>
 </mat-card>

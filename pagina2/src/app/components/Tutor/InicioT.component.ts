@@ -66,6 +66,14 @@ export class InicioTComponent implements OnInit{
 
 
   recomendados(){
-      this.router.navigate([`tutor/${this.idTutor}/ver-clases`]);
+    this.router.navigate([`tutor/${this.idTutor}/ver-clases`]);
   }
+
+  nav_prevClase(ruta:string){
+    this.router.navigate([`tutor/${this.idTutor}/previa-clase/${ruta}`]);
+  }
+
+
+
+
 } 
